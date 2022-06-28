@@ -1,0 +1,95 @@
+@import url("./scienceLiteracy.css");
+@import url("./utinity.css");
+html {
+  overflow-y: auto !important;
+}
+
+.container {
+  height: 100%;
+  padding: 10px;
+}
+
+.selector-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.selector-group .selector {
+  display: block;
+  width: 100%;
+}
+
+.selector-group h4 {
+  margin-right: 20px;
+}
+
+.pageTab .pageTabList {
+  border: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.pageTab .pageTabList li {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: center;
+  margin: 0px;
+  border-radius: 0px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.pageTab .pageTabList li.actTab {
+  border-bottom: 0px;
+}
+
+#content1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+.contant-custom {
+  padding: 14px;
+  vertical-align: top;
+  -webkit-box-shadow: 0px 0px 5px #30313345;
+          box-shadow: 0px 0px 5px #30313345;
+  background: #fff;
+  padding: 10px 10px;
+  color: #5c5c5c;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.search-btn {
+  display: block;
+  width: 60%;
+  margin: auto;
+}
+
+@media (min-width: 1400px) {
+  #content1 {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 0.5fr 3fr;
+        grid-template-columns: 0.5fr 3fr;
+    grid-gap: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-btn {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=index.css.map */

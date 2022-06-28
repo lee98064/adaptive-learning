@@ -1,0 +1,156 @@
+.scienceLiteracy-history-big-title,
+.scienceLiteracy-history-row-title {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  border: 1px solid #000;
+  padding: 10px 2px 10px 20px;
+  color: #707070;
+  cursor: default;
+  h4 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 166.3%;
+    margin: 0;
+  }
+}
+
+.scienceLiteracy-history-row-title {
+  grid-template-columns: 1fr 0.3fr;
+  cursor: pointer;
+  & i {
+    justify-self: end;
+    margin-right: 20px;
+    transition: all 0.3s;
+  }
+
+  &:nth-child(1) {
+    border-top: 0px;
+  }
+
+  &.active {
+    & i {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.scienceLiteracy-history-row-data {
+  display: grid;
+  padding: 10px;
+  background-color: #fbf6e3;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+
+  .row-data-title {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 166.3%;
+    text-align: center;
+    color: #707070;
+    background-color: #fff;
+  }
+
+  .row-data-content {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 166.3%;
+  }
+
+  .row-data-number {
+    .row-data-number-title {
+      margin-bottom: 10px;
+    }
+    .row-data-number-btn-group {
+      display: flex;
+      & > button {
+        height: 30px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .row-data-table {
+    .row-data-table-title {
+      display: grid;
+      grid-template-columns: 1fr 0.2fr;
+      h4 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 166.3%;
+        color: #707070;
+        background-color: #fff;
+        &:nth-child(1) {
+          padding-left: 10px;
+          grid-column: 1/2;
+        }
+      }
+    }
+
+    .row-data-table-data {
+      display: grid;
+      grid-template-columns: 0.3fr 1fr 0.3fr;
+      grid-gap: 14px;
+      align-items: center;
+      & h4 {
+        background-color: #fff;
+        padding-left: 10px;
+      }
+      & h4,
+      p {
+        font-size: 13px;
+      }
+      & img {
+        width: 38px;
+      }
+    }
+  }
+
+  .row-data-more {
+    height: 30px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scienceLiteracy-history-big-title {
+    grid-template-columns: 1fr 1fr 0.3fr;
+  }
+
+  .scienceLiteracy-history-row-title {
+    grid-template-columns: 1fr 1fr 0.3fr;
+  }
+
+  .scienceLiteracy-history-row-data {
+    grid-template-columns: 100px 4fr;
+    grid-gap: 10px;
+
+    .row-data-table {
+      grid-column: 1/3;
+      .row-data-table-title {
+        grid-gap: 10px;
+        grid-template-columns: 100px 1fr 0.2fr 0.2fr;
+        & h4 {
+          margin-bottom: 12px;
+        }
+      }
+      .row-data-table-data {
+        grid-template-columns: 100px 1fr 0.2fr 0.2fr;
+        p {
+          font-size: 15px;
+        }
+        & button {
+          margin: 0;
+          font-size: 14px;
+          height: 30px;
+        }
+      }
+    }
+
+    .row-data-more {
+      grid-column: 1/3;
+      height: 40px;
+      font-size: 19px;
+    }
+  }
+}

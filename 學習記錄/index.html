@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=yes,maximum-scale=5.0,minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="./css/cms-index.css" />
+    <link
+      id="cssFile"
+      rel="stylesheet"
+      type="text/css"
+      href="./css/student_root.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./css/newcss.css" />
+    <link rel="stylesheet" type="text/css" href="./css/function.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section id="pageTab">
+        <div class="pageTab">
+          <ul class="pageTabList">
+            <li data-page="content1" class="actTab">學習紀錄</li>
+            <li data-page="content2">能力分析雷達圖</li>
+          </ul>
+          <div class="pageTabContent">
+            <div id="content1">
+              <div class="left">
+                <div class="contant contant-custom">
+                  <div class="selector-group">
+                    <h4>核心素養:</h4>
+                    <div class="selector" id="classNum">
+                      <span class="valueShow" data-value="">預設內容</span>
+                      <ul>
+                        <li>預設內容</li>
+                        <li>選項1</li>
+                        <li>選項2</li>
+                        <li>選項3</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="selector-group">
+                    <h4>探究學習內容:</h4>
+                    <div class="selector" id="classNum">
+                      <span class="valueShow" data-value="">預設內容</span>
+                      <ul>
+                        <li>預設內容</li>
+                        <li>選項1</li>
+                        <li>選項2</li>
+                        <li>選項3</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <button class="btn confirmBtn search-btn">查詢</button>
+                </div>
+                <button class="btn confirmBtn d-block w-100 m-0">
+                  下載學習紀錄
+                </button>
+              </div>
+              <div class="right">
+                <div class="scienceLiteracy-history-big-title">
+                  <h4>題目名稱(點擊展開作答紀錄)</h4>
+                  <h4 class="sm-d-none">測驗時間(年/月/日 時刻)</h4>
+                </div>
+                <div class="scienceLiteracy-history-row">
+                  <div class="scienceLiteracy-history-row-title">
+                    <h4>82.全球氣候變遷之融冰現象</h4>
+                    <h4 class="sm-d-none">2022-06-08 15:39:47</h4>
+                    <i class="fa-solid fa-caret-right"></i>
+                  </div>
+                  <div class="scienceLiteracy-history-row-data">
+                    <h4 class="row-data-title md-d-none">
+                      最新測驗日期(年/月/日 時刻)
+                    </h4>
+
+                    <p class="md-d-none text-center row-data-content">
+                      2022-06-08 15:39:47
+                    </p>
+                    <h4 class="row-data-title">核心素養</h4>
+
+                    <p class="row-data-content">
+                      A2系統思考與解決問題、B1符號運用與溝通表達、B2科技資訊與媒體素養。
+                    </p>
+
+                    <h4 class="row-data-title">探究學習內容</h4>
+                    <p class="row-data-content">
+                      搜集資訊、收集資料數據、分析資料和呈現證據、解釋和推理、評價與省思。
+                    </p>
+
+                    <div class="row-data-number md-d-none">
+                      <h4 class="row-data-title row-data-number-title">
+                        題目(解答)
+                      </h4>
+                      <div class="row-data-number-btn-group">
+                        <button class="btn defaultBtn d-block">1</button>
+                        <button class="btn defaultBtn d-block">2</button>
+                        <button class="btn defaultBtn d-block">3</button>
+                      </div>
+                    </div>
+                    <div class="row-data-table">
+                      <div class="row-data-table-title">
+                        <h4 class="sm-d-none">題目(解答)</h4>
+                        <h4>你的答案(依照作答時間近至遠排序)</h4>
+                        <h4>對/錯</h4>
+                        <h4 class="sm-d-none">作答時間(秒)</h4>
+                      </div>
+                      <div class="row-data-table-data">
+                        <button class="btn defaultBtn d-block sm-d-none">
+                          1
+                        </button>
+                        <h4 class="md-d-none">問題一</h4>
+                        <p>B</p>
+                        <img src="./images/correct.png" alt="" />
+                        <p class="sm-d-none">54秒</p>
+                      </div>
+                      <div class="row-data-table-data">
+                        <span class="sm-d-none"></span>
+                        <h4 class="md-d-none"></h4>
+                        <p>因為量筒的水量最少。</p>
+                        <img src="./images/error.png" alt="" />
+                        <p class="sm-d-none">54秒</p>
+                      </div>
+                      <div class="row-data-table-data">
+                        <button class="btn defaultBtn d-block sm-d-none">
+                          2
+                        </button>
+                        <h4 class="md-d-none">問題二</h4>
+                        <p>因為量筒的水量最少。</p>
+                        <img src="./images/error.png" alt="" />
+                        <p class="sm-d-none">54秒</p>
+                      </div>
+                    </div>
+                    <button class="btn defaultBtn d-block m-auto row-data-more">
+                      查看本題過往作答歷史
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="content2"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="./js/customStyle_function.js"></script>
+    <script src="./js/jquery-3.5.1.min.ob.js"></script>
+    <script src="./js/function.js"></script>
+    <script
+      src="https://kit.fontawesome.com/98e5a63198.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
