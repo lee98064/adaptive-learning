@@ -10,6 +10,15 @@ $(document).ready(async function () {
     $(this).toggleClass("active");
   });
 
+  let getCoreliteracyOption = await getData("getOption_Coreliteracy");
+  if ("success" === getCoreliteracyOption["status"]) {
+    getCoreliteracyOption["data"].forEach((ele) => {
+      $("#coreliteracy-selector > ul").append(
+        `<li data-value="${ele.value}">${ele["text"]}</li>`
+      );
+    });
+  }
+
   _12About = await get12About();
 });
 
@@ -29,14 +38,7 @@ function getAccessToken() {
       "Target-URL": targetUrl,
     },
     dataType: "JSON",
-  })
-    .done(function (result) {
-      // console.log(result);
-    })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-      // console.log(jqXHR, textStatus, errorThrown);
-    })
-    .always(function () {});
+  });
 }
 
 async function getData(sFuncName) {
@@ -51,8 +53,26 @@ async function getData(sFuncName) {
       case "getProperty_CoreLiteracy":
         vRtn = await getProperty_CoreLiteracy(oParm);
         break;
+      case "getOption_Coreliteracy":
+        vRtn = await getOption_Coreliteracy(oParm);
     }
   }
 
   return vRtn;
+}
+
+async function getOption_Coreliteracy(oParm) {
+  return $.ajax({
+    type: "POST",
+    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
+    data: {
+      data: sTokenDataValue,
+      accesstoken: oParm["accesstoken"],
+      property_coreliteracy: 1,
+    },
+    headers: {
+      "Target-URL": targetUrl,
+    },
+    dataType: "JSON",
+  });
 }
