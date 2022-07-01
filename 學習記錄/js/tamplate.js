@@ -70,3 +70,48 @@ function get12AboutStr(core_code) {
 
   return str;
 }
+
+function formatTime2HMSMs(time) {
+  const millisecond = parseInt(time % 1000);
+  let second = 0;
+  let totalMinute = 0;
+  let minute = 0;
+  let hour = 0;
+  let result = "";
+  const totalSecond = parseInt(time / 1000); // 3671
+  if (totalSecond > 59) {
+    second = parseInt(totalSecond % 60); // 11
+    totalMinute = parseInt(totalSecond / 60); // 61
+  } else {
+    second = totalSecond;
+  }
+  if (totalMinute > 59) {
+    minute = parseInt(totalMinute % 60); // 1
+    hour = parseInt(totalMinute / 60); // 1
+  } else {
+    minute = totalMinute;
+  }
+  //   if (hour < 10) {
+  //     result += "0" + hour;
+  //   } else {
+  //     result += "" + hour;
+  //   }
+  if (minute < 10) {
+    result += "0" + minute;
+  } else {
+    result += "分" + minute;
+  }
+  if (second < 10) {
+    result += "分0" + second + "秒";
+  } else {
+    result += "分" + second + "秒";
+  }
+  //   if (millisecond < 10) {
+  //     result += ",00" + millisecond;
+  //   } else if (millisecond < 100) {
+  //     result += ",0" + millisecond;
+  //   } else {
+  //     result += "," + millisecond;
+  //   }
+  return result;
+}

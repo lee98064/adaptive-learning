@@ -152,7 +152,7 @@
             <h4 class="sm-d-none"><%= data[i].examlist.length == 0 ? '無資料' : formatDate(data[i].examlist[0].update_time) %></h4>
             <i class="fa-solid fa-caret-right"></i>
           </div>
-          <div class="scienceLiteracy-history-row-data">
+          <div class="scienceLiteracy-history-row-data" style="display: none;">
             <h4 class="row-data-title md-d-none">最新測驗日期(年/月/日 時刻)</h4>
   
             <p class="md-d-none text-center row-data-content">
@@ -184,20 +184,27 @@
                 <h4>對/錯</h4>
                 <h4 class="sm-d-none">作答時間(秒)</h4>
               </div>
-              <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++ ) { %>
-                <div class="row-data-table-data">
-                  <button class="btn defaultBtn d-block sm-d-none"><%= j+1 %></button>
-                  <h4 class="md-d-none">問題一</h4>
-                  <p><%= data[i].examlist[0].anslist[j].answer %></p>
-                  <% if(data[i].examlist[0].anslist[j].iscorrect == "1") { %>
-                    <img src="./images/correct.png" alt="" />
-                  <% }else{ %>
-                    <img src="./images/error.png" alt="" />
-                  <% } %>
-                  <p class="sm-d-none">54秒</p>
-                </div>
+
+              <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++){ %>
+                <% for (var k = 0; k < data[i].examlist.length; k++) { %>
+                  <div class="row-data-table-data">
+                    <% if( k == 0 ){ %>
+                      <button class="btn defaultBtn d-block sm-d-none"><%= j+1 %></button>
+                      <h4 class="md-d-none">問題<%= j + 1 %></h4>
+                    <% }else{ %>
+                        <span class="sm-d-none"></span>
+                        <span class="md-d-none"></span>
+                    <% } %>
+                    <p><%= data[i].examlist[k].anslist[j].answer %></p>
+                    <% if(data[i].examlist[k].anslist[j].iscorrect == "1") { %>
+                      <img src="./images/correct.png" alt="" />
+                    <% }else{ %>
+                      <img src="./images/error.png" alt="" />
+                    <% } %>
+                    <p class="sm-d-none"><%= formatTime2HMSMs(data[i].examlist[k].anslist[j].answer_time) %></p>
+                  </div>
+                <% } %>
               <% } %>
-              
               <!-- <div class="row-data-table-data">
                 <span class="sm-d-none"></span>
                 <h4 class="md-d-none"></h4>

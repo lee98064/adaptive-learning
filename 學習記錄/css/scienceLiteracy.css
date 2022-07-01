@@ -131,6 +131,8 @@
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-data h4,
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-data p {
   font-size: 13px;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-data img {
