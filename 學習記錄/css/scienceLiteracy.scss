@@ -63,7 +63,11 @@
     }
     .row-data-number-btn-group {
       display: flex;
+      // justify-content: space-between;
+      width: 100%;
+      flex-wrap: wrap;
       & > button {
+        flex-grow: 1;
         height: 30px;
         font-size: 12px;
       }

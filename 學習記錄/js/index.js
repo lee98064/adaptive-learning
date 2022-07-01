@@ -1,27 +1,56 @@
 var sTokenDataValue =
-  "ZDgyYzhkMTYxOWFkODE3NmQ2NjU0NTNjZmIyZTU1ZjBFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRRNklqRTVNREEwTVMxek1Ea3hNREF4SWp0ek9qZzZJbUpsYUdGMmFXOXlJanR6T2pFNE9pSm5ZVzFsWDJKaGMyVmZiR1ZoY201cGJtY2lPM002T0RvaVkyeHBaVzUwYVdRaU8zTTZNekk2SWpkaFVEUlhSR3R5T0hsM1ZHaFFOMEYyZURKQ01saEVZVTVHT1V0V1RVUmFJanR6T2pFeU9pSmpiR2xsYm5SelpXTnlaWFFpTzNNNk5qUTZJblkxZUdoRU5ITlRUVkZDVUVkM1ZUTjZlbEJtU3pWNlNHaGFRbEZvZVZwbFpGQldaMGhyUzFSQmVHMWpORmRSUzJKa2MzSjVZMVpIVm5SYWJrZEdlVmdpTzMwPUVkVUFkTDM4RkYwNEE3ODcxMkFDMDkyMDU5MjIyMjY4MUIyNkEy";
+  "ZTM2OTg1M2RmNzY2ZmE0NGUxZWQwZmY2MTNmNTYzYmRFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRNNklqRTVNREEwTVMxMGREQTVNRE1pTzNNNk9Eb2lZbVZvWVhacGIzSWlPM002TVRVNkltTm9hVzVsYzJWZmNtVmhaR2x1WnlJN2N6bzRPaUpqYkdsbGJuUnBaQ0k3Y3pvek1qb2lObTV3YzFwUk5FdGlhRzVVTmxGV1YyRmlSR2RSWVdJNFMwWkRSRGxoWnpZaU8zTTZNVEk2SW1Oc2FXVnVkSE5sWTNKbGRDSTdjem8yTkRvaVdHMXRZMFJDVW5sd1JYZENjRmh4VFUxa1dVaFpPRGd5YUdWbldFdHJjMmhRZUZKWGJuWTNXakpFWTFwVlRWSTRPRWc1ZFhsV1YyMXlXWGRXZFRKNGRDSTdmUT09RWRVQWRMQTBGOUI1OTVCMzVFMTI2N0Y5NkQ3NDNBQjRFNjk1MzY==A0F9B595B35E1267F96D743AB4E69536==";
 var proxy = "https://proxy.leetools.eu.org";
-var targetUrl = "https://adaptive-learning.ntcu.edu.tw";
 var _12About = {};
 
 $(document).ready(async function () {
+  $.LoadingOverlay("show");
+
+  // 取得12面相解說文字
+  _12About = await get12About();
+
   $(document).on("click", ".scienceLiteracy-history-row-title", function () {
     $(this).siblings(".scienceLiteracy-history-row-data").slideToggle("slow");
     $(this).toggleClass("active");
   });
 
-  let getCoreliteracyOption = await getData("getOption_Coreliteracy");
-  if ("success" === getCoreliteracyOption["status"]) {
-    getCoreliteracyOption["data"].forEach((ele) => {
+  // 當按下搜尋按鈕
+  $(document).on("click", ".search-btn", async function () {
+    $.LoadingOverlay("show");
+    let getScienceLiteracyData = await getData("getData_ScienceLiteracy");
+    console.log(getScienceLiteracyData);
+    $("#scienceLiteracy-history-row").html(
+      tmpl("scienceLiteracy_history_row_template", {
+        data: getScienceLiteracyData["data"],
+      })
+    );
+    $.LoadingOverlay("hide");
+  });
+
+  // 初始化核心素養選項
+  let getCoreLiteracyOption = await getData("getOption_CoreLiteracy");
+  if ("success" === getCoreLiteracyOption["status"]) {
+    getCoreLiteracyOption["data"].forEach((ele) => {
       $("#coreliteracy-selector > ul").append(
         `<li data-value="${ele.value}">${ele["text"]}</li>`
       );
     });
   }
 
-  _12About = await get12About();
+  // 初始化探究學習內容
+  let getExploreLearningOption = await getData("getOption_ExploreLearning");
+  if ("success" === getExploreLearningOption["status"]) {
+    getExploreLearningOption["data"].forEach((ele) => {
+      $("#explorelearning-selector > ul").append(
+        `<li data-value="${ele.value}">${ele["text"]}</li>`
+      );
+    });
+  }
+
+  $.LoadingOverlay("hide");
 });
 
+//取得12面相解說文字
 function get12About() {
   return $.get("../data/12about.json", (data, status) => {}, "JSON");
 }
@@ -33,9 +62,6 @@ function getAccessToken() {
     url: `${proxy}/aialtest/ADLAPI/v2/token`,
     data: {
       data: sTokenDataValue,
-    },
-    headers: {
-      "Target-URL": targetUrl,
     },
     dataType: "JSON",
   });
@@ -50,29 +76,59 @@ async function getData(sFuncName) {
     oParm["accesstoken"] = oAccessTokenResult["accesstoken"];
 
     switch (sFuncName) {
-      case "getProperty_CoreLiteracy":
-        vRtn = await getProperty_CoreLiteracy(oParm);
+      case "getOption_CoreLiteracy":
+        vRtn = await getOption_CoreLiteracy(oParm);
         break;
-      case "getOption_Coreliteracy":
-        vRtn = await getOption_Coreliteracy(oParm);
+      case "getOption_ExploreLearning":
+        vRtn = await getOption_ExploreLearning(oParm);
+        break;
+      case "getData_ScienceLiteracy":
+        vRtn = await getData_ScienceLiteracy(oParm);
+        break;
     }
   }
-
   return vRtn;
 }
 
-async function getOption_Coreliteracy(oParm) {
+// 取得核心素養選項API
+async function getOption_CoreLiteracy(oParm) {
   return $.ajax({
     type: "POST",
     url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
     data: {
-      data: sTokenDataValue,
       accesstoken: oParm["accesstoken"],
       property_coreliteracy: 1,
     },
-    headers: {
-      "Target-URL": targetUrl,
+    dataType: "JSON",
+  });
+}
+
+// 取得探究學習內容API
+async function getOption_ExploreLearning(oParm) {
+  return $.ajax({
+    type: "POST",
+    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
+    data: {
+      accesstoken: oParm["accesstoken"],
+      property_explorelearning: 1,
     },
     dataType: "JSON",
+  });
+}
+
+// 取得學習紀錄
+async function getData_ScienceLiteracy(oParm) {
+  return $.ajax({
+    type: "POST",
+    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
+    dataType: "JSON",
+    data: {
+      accesstoken: oParm["accesstoken"],
+      getscienceliteracy: 1,
+      coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
+      explorelearning: $("#explorelearning-selector > .valueShow").data(
+        "value"
+      ),
+    },
   });
 }

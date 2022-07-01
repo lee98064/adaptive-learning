@@ -77,9 +77,15 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .scienceLiteracy-history-row-data .row-data-number .row-data-number-btn-group > button {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   height: 30px;
   font-size: 12px;
 }
