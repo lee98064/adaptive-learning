@@ -18,7 +18,8 @@ html {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
 
 .selector-group .selector {
@@ -28,6 +29,34 @@ html {
 
 .selector-group h4 {
   margin-right: 20px;
+}
+
+.input-group {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.input-group .input-box {
+  position: relative;
+}
+
+.input-group .input-box input {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #a3a3a3;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 15px;
+  padding-right: 30px;
+  color: #5c5c5c;
+}
+
+.input-group .input-box i {
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  font-size: 15px;
 }
 
 .pageTab .pageTabList {

@@ -32,14 +32,26 @@
                     <h4>核心素養:</h4>
                     <div class="selector" id="coreliteracy-selector">
                       <span class="valueShow" data-value>請選擇</span>
-                      <ul></ul>
+                      <ul>
+                        <li data-value="">全部</li>
+                      </ul>
                     </div>
                   </div>
                   <div class="selector-group">
                     <h4>探究學習內容:</h4>
                     <div class="selector" id="explorelearning-selector">
                       <span class="valueShow" data-value>請選擇</span>
-                      <ul></ul>
+                      <ul>
+                        <li data-value="">全部</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="input-group">
+                    <h4>試題編號或名稱:</h4>
+                    <div class="input-box">
+                      <input type="text">
+                      <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                   </div>
                   <button class="btn confirmBtn search-btn">查詢</button>
@@ -187,7 +199,7 @@
 
               <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++){ %>
                 <% for (var k = 0; k < data[i].examlist.length; k++) { %>
-                  <div class="row-data-table-data">
+                  <div class="row-data-table-data<% if( k != 0 ){ %> history-data<% } %>">
                     <% if( k == 0 ){ %>
                       <button class="btn defaultBtn d-block sm-d-none"><%= j+1 %></button>
                       <h4 class="md-d-none">問題<%= j + 1 %></h4>
@@ -195,10 +207,11 @@
                         <span class="sm-d-none"></span>
                         <span class="md-d-none"></span>
                     <% } %>
-                    <p><%= data[i].examlist[k].anslist[j].answer %></p>
                     <% if(data[i].examlist[k].anslist[j].iscorrect == "1") { %>
+                      <p><%= data[i].examlist[k].anslist[j].answer %></p>
                       <img src="./images/correct.png" alt="" />
                     <% }else{ %>
+                      <p class="error-answer"><%= data[i].examlist[k].anslist[j].answer %></p>
                       <img src="./images/error.png" alt="" />
                     <% } %>
                     <p class="sm-d-none"><%= formatTime2HMSMs(data[i].examlist[k].anslist[j].answer_time) %></p>
@@ -214,7 +227,7 @@
               </div> -->
             </div>
             <button class="btn defaultBtn d-block m-auto row-data-more">
-              查看本題過往作答歷史
+              <i class="fa-solid fa-eye"></i>
             </button>
           </div>
         </div>

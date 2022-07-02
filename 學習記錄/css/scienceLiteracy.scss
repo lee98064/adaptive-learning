@@ -38,6 +38,7 @@
 .scienceLiteracy-history-row-data {
   display: grid;
   padding: 10px;
+  padding-bottom: 15px;
   background-color: #fbf6e3;
   grid-template-columns: 1fr;
   grid-gap: 10px;
@@ -91,6 +92,14 @@
       }
     }
 
+    &.show-history {
+      .row-data-table-data {
+        &.history-data {
+          display: grid;
+        }
+      }
+    }
+
     .row-data-table-data {
       display: grid;
       grid-template-columns: 0.3fr 1fr 0.3fr;
@@ -109,16 +118,34 @@
         // overflow: hidden;
         // white-space: nowrap;
         // text-overflow: ellipsis;
+        &.error-answer {
+          text-decoration: line-through;
+          color: var(--contrast-color);
+        }
       }
       & img {
         width: 38px;
+      }
+
+      &.history-data {
+        display: none;
       }
     }
   }
 
   .row-data-more {
-    height: 30px;
-    font-size: 12px;
+    height: 40px;
+    font-size: 19px;
+
+    &.show {
+      &::after {
+        content: "隱藏本題過往作答歷史";
+      }
+    }
+
+    &::after {
+      content: "查看本題過往作答歷史";
+    }
   }
 }
 
@@ -151,7 +178,7 @@
         }
         & button {
           margin: 0;
-          font-size: 14px;
+          font-size: 15px;
           height: 30px;
         }
       }
@@ -159,8 +186,6 @@
 
     .row-data-more {
       grid-column: 1/3;
-      height: 40px;
-      font-size: 19px;
     }
   }
 }

@@ -27,6 +27,18 @@ $(document).ready(async function () {
     $.LoadingOverlay("hide");
   });
 
+  // 查看過往紀錄
+  $(document).on("click", ".row-data-more", function () {
+    $.LoadingOverlay("show");
+    $(this).toggleClass("distinctBtn");
+    $(this).toggleClass("defaultBtn");
+    $(this).toggleClass("show");
+    $(this).children("i").toggleClass("fa-eye");
+    $(this).children("i").toggleClass("fa-eye-slash");
+    $(this).siblings(".row-data-table").toggleClass("show-history");
+    $.LoadingOverlay("hide");
+  });
+
   // 初始化核心素養選項
   let getCoreLiteracyOption = await getData("getOption_CoreLiteracy");
   if ("success" === getCoreLiteracyOption["status"]) {
@@ -47,6 +59,8 @@ $(document).ready(async function () {
     });
   }
 
+  // 產生ModalBox框架
+  document.write('<div class="ModalBoxBig"></div>');
   $.LoadingOverlay("hide");
 });
 
