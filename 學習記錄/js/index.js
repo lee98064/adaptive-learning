@@ -8,6 +8,7 @@ $(document).ready(async function () {
 
   // 取得12面相解說文字
   _12About = await get12About();
+  _SO4BJ = await getSO4BJ();
 
   $(document).on("click", ".scienceLiteracy-history-row-title", function () {
     $(this).siblings(".scienceLiteracy-history-row-data").slideToggle("slow");
@@ -25,6 +26,22 @@ $(document).ready(async function () {
       })
     );
     $.LoadingOverlay("hide");
+  });
+
+  $(document).on("click", "#download_history", function () {
+    const buttonBig = [
+      {
+        buttonText: "下載學習紀錄",
+        buttonId: "start_download",
+        buttonClass: "btn07 ModalBoxButton",
+      },
+    ];
+    modalBoxBig(
+      "教育部因才網",
+      '<h1 style="width: 100%">sdffsf</h1>',
+      buttonBig,
+      true
+    );
   });
 
   // 查看過往紀錄
@@ -59,27 +76,8 @@ $(document).ready(async function () {
     });
   }
 
-  // 產生ModalBox框架
-  document.write('<div class="ModalBoxBig"></div>');
   $.LoadingOverlay("hide");
 });
-
-//取得12面相解說文字
-function get12About() {
-  return $.get("../data/12about.json", (data, status) => {}, "JSON");
-}
-
-// 取得Access Token
-function getAccessToken() {
-  return $.ajax({
-    type: "POST",
-    url: `${proxy}/aialtest/ADLAPI/v2/token`,
-    data: {
-      data: sTokenDataValue,
-    },
-    dataType: "JSON",
-  });
-}
 
 async function getData(sFuncName) {
   var vRtn = [];
@@ -102,47 +100,4 @@ async function getData(sFuncName) {
     }
   }
   return vRtn;
-}
-
-// 取得核心素養選項API
-async function getOption_CoreLiteracy(oParm) {
-  return $.ajax({
-    type: "POST",
-    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
-    data: {
-      accesstoken: oParm["accesstoken"],
-      property_coreliteracy: 1,
-    },
-    dataType: "JSON",
-  });
-}
-
-// 取得探究學習內容API
-async function getOption_ExploreLearning(oParm) {
-  return $.ajax({
-    type: "POST",
-    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
-    data: {
-      accesstoken: oParm["accesstoken"],
-      property_explorelearning: 1,
-    },
-    dataType: "JSON",
-  });
-}
-
-// 取得學習紀錄
-async function getData_ScienceLiteracy(oParm) {
-  return $.ajax({
-    type: "POST",
-    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
-    dataType: "JSON",
-    data: {
-      accesstoken: oParm["accesstoken"],
-      getscienceliteracy: 1,
-      coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
-      explorelearning: $("#explorelearning-selector > .valueShow").data(
-        "value"
-      ),
-    },
-  });
 }

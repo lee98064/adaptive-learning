@@ -91,15 +91,12 @@ html {
   margin: auto;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 768px) {
   #content1 {
     display: grid;
     grid-template-columns: 0.5fr 3fr;
     grid-gap: 40px;
   }
-}
-
-@media (min-width: 1024px) {
   .search-btn {
     width: 100%;
   }
