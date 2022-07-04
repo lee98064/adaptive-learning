@@ -61,18 +61,49 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.filterBox .filterBox-checkBox-selectAll label::before {
+  height: 18px;
+  width: 18px;
+}
+
+.filterBox .filterBox-checkBox-selectAll label::after {
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  font-size: 5px;
+  text-align: center;
+}
+
 .filterBox .filterBox-checkBox-group-list {
   max-height: 45vh;
   overflow-y: auto;
 }
 
 .filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group {
+  overflow-x: hidden;
   padding: 10px 20px;
 }
 
 .filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group label {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group label::before {
+  height: 18px;
+  width: 18px;
+}
+
+.filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group label::after {
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  font-size: 5px;
+  text-align: center;
 }
 
 .ModalBoxContent {
