@@ -140,7 +140,10 @@
                 </div>
               </div>
             </div>
-            <div id="content2"></div>
+            <div id="content2">
+
+
+            </div>
           </div>
         </div>
       </section>
@@ -179,7 +182,7 @@
   
             <h4 class="row-data-title">探究學習內容</h4>
             <p class="row-data-content">
-              搜集資訊、收集資料數據、分析資料和呈現證據、解釋和推理、評價與省思。
+              <%= getSO4BJStr(data[i].learning_content) %>
             </p>
   
             <div class="row-data-number md-d-none">
@@ -233,6 +236,9 @@
           </div>
         </div>
       <% } %>
+    </script>
+
+    <script type="text/html" id="scienceLiteracy_history_row_template">
       
     </script>
     <script src="./js/api.js"></script>

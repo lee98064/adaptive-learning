@@ -71,6 +71,23 @@ function get12AboutStr(core_code) {
   return str;
 }
 
+function getSO4BJStr(learning_content) {
+  data = learning_content.split("_");
+
+  str = "";
+  data.forEach((ele) => {
+    if (ele != "" && ele != null) {
+      str += _SO4BJ[ele].title + "、";
+    }
+  });
+
+  if (str.length > 1) str = str.substring(0, str.length - 1) + "。";
+
+  if (str == "") str = "此題尚未提供探究學習內容。";
+
+  return str;
+}
+
 function formatTime2HMSMs(time) {
   const millisecond = parseInt(time % 1000);
   let second = 0;

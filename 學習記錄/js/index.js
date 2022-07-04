@@ -12,14 +12,13 @@ $(document).ready(async function () {
 
   $(document).on("click", ".scienceLiteracy-history-row-title", function () {
     $(this).siblings(".scienceLiteracy-history-row-data").slideToggle("slow");
-    $(this).toggleClass("active");
+    $(this).parent(".scienceLiteracy-history-row").toggleClass("active");
   });
 
   // 當按下搜尋按鈕
   $(document).on("click", ".search-btn", async function () {
     $.LoadingOverlay("show");
     let getScienceLiteracyData = await getData("getData_ScienceLiteracy");
-    console.log(getScienceLiteracyData);
     $("#scienceLiteracy-history-row").html(
       tmpl("scienceLiteracy_history_row_template", {
         data: getScienceLiteracyData["data"],
@@ -28,6 +27,7 @@ $(document).ready(async function () {
     $.LoadingOverlay("hide");
   });
 
+  // 當按下下載學習紀錄
   $(document).on("click", "#download_history", function () {
     const buttonBig = [
       {

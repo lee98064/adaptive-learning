@@ -1,9 +1,24 @@
+.scienceLiteracy-history-row {
+  &.active {
+    & .scienceLiteracy-history-row-title {
+      border-bottom: 1px solid var(--main-dark);
+      & i {
+        transform: rotate(90deg);
+      }
+    }
+
+    & .scienceLiteracy-history-row-data {
+      border-bottom: 1px solid var(--main-dark);
+    }
+  }
+}
+
 .scienceLiteracy-history-big-title,
 .scienceLiteracy-history-row-title {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  border: 1px solid #000;
+  border: 1px solid var(--main-dark);
   padding: 10px 2px 10px 20px;
   color: #707070;
   cursor: default;
@@ -27,19 +42,13 @@
   &:nth-child(1) {
     border-top: 0px;
   }
-
-  &.active {
-    & i {
-      transform: rotate(90deg);
-    }
-  }
 }
 
 .scienceLiteracy-history-row-data {
   display: grid;
   padding: 10px;
   padding-bottom: 15px;
-  background-color: #fbf6e3;
+  background-color: var(--secondary-light);
   grid-template-columns: 1fr;
   grid-gap: 10px;
 
@@ -103,7 +112,7 @@
     .row-data-table-data {
       display: grid;
       grid-template-columns: 0.3fr 1fr 0.3fr;
-      grid-gap: 14px;
+      grid-gap: 10px;
       align-items: center;
       & h4 {
         background-color: #fff;
