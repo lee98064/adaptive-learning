@@ -1,0 +1,97 @@
+:root {
+  --border-color: #e5e5e5;
+}
+
+.ModalBoxDetailText {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-gap: 20px;
+  margin: 0;
+  padding: 20px 10px 20px 10px;
+}
+
+.filterBox-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.filterBox {
+  height: 100%;
+  border: 1px solid var(--border-color);
+}
+
+.filterBox .filterBox-input-group {
+  width: inherit;
+  position: relative;
+  border-bottom: 1px solid var(--border-color);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.filterBox .filterBox-input-group input {
+  display: block;
+  width: 100%;
+  border: none;
+  padding-left: 20px;
+  padding-right: 30px;
+}
+
+.filterBox .filterBox-input-group button {
+  position: absolute;
+  height: 100%;
+  width: 30px;
+  top: 0;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.filterBox .filterBox-checkBox-selectAll {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.filterBox .filterBox-checkBox-group-list {
+  max-height: 45vh;
+  overflow-y: auto;
+}
+
+.filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group {
+  padding: 10px 20px;
+}
+
+.filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group label {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ModalBoxContent {
+  max-width: unset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+@media (min-width: 1100px) {
+  .ModalBoxDetailText {
+    min-width: 75vw;
+    max-width: 78vw;
+    max-height: 75vh;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .filterBox-group {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=downloadModal.css.map */
