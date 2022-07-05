@@ -262,82 +262,19 @@
             <label for="selectAll1">全選</label>
           </div>
           <div class="filterBox-checkBox-group-list">
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox">
-              <label>082. 全球氣候變遷之融冰現</label>
-            </div>
+            <% if(data.scienceLiteracyData.length < 0){ %>
+              <h4>
+                <font color="#E00">
+                  尚未有作答紀錄!!
+                </font>
+              </h4>
+            <% } %>
+            <% for(var i = 0; i < data.scienceLiteracyData.length; i++) { %>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="<%= data.scienceLiteracyData[i].item_li_sn %>">
+                <label><%= data.scienceLiteracyData[i].item_show_num %>. <%= data.scienceLiteracyData[i].item_name %></label>
+              </div>
+            <% } %>
           </div>
         </div>
       </div>
