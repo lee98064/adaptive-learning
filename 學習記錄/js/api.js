@@ -59,3 +59,17 @@ async function getData_ScienceLiteracy(oParm, data) {
     },
   });
 }
+
+// 取得學習紀錄輸出Excel
+async function getData_ScienceLiteracyExport(oParm, data) {
+  return $.ajax({
+    type: "POST",
+    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
+    dataType: "JSON",
+    data: {
+      accesstoken: oParm["accesstoken"],
+      getscienceliteracyexport: 1,
+      ...data,
+    },
+  });
+}

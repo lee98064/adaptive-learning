@@ -110,6 +110,9 @@ async function getData(sFuncName, data = {}) {
       case "getData_ScienceLiteracy":
         vRtn = await getData_ScienceLiteracy(oParm, data);
         break;
+      case "getData_ScienceLiteracyExport":
+        vRtn = await getData_ScienceLiteracyExport(oParm, data);
+        break;
     }
   }
   return vRtn;

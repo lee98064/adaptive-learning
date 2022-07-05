@@ -1,150 +1,161 @@
 <script>
-    var sTokenDataValue = '<?php echo $sTokenDataValue; ?>';
+  var sTokenDataValue = "<?php echo $sTokenDataValue; ?>";
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
 <script>
-    $(document).ready(function() {
-        // initProperty();
+  $(document).ready(function () {
+    // initProperty();
 
-        downloadCoreLiteracyExcel();
-    });
+    downloadCoreLiteracyExcel();
+  });
 
+  // Function --------------------
+  function initProperty() {
+    var sFuncName = "getProperty_CoreLiteracy";
+    getData(sFuncName)
+      .then((oResult) => {
+        console.log(oResult);
 
-    // Function --------------------
-    function initProperty() {
-        var sFuncName = 'getProperty_CoreLiteracy';
-        getData(sFuncName).then(oResult => {
-            console.log(oResult);
-
-            if ('success' === oResult['status']) {
-                // oResult['data']
-                // Do Something
-            }
-        }).catch(oReason => {
-            console.log(oReason);
-        }).finally(() => {
-        });
-    }
-
-    function downloadCoreLiteracyExcel() {
-        var sFuncName = 'getScienceLiteracyExport';
-        getData(sFuncName).then(oResult => {
-            console.log(oResult);
-
-            if ('success' === oResult['status']) {
-                // console.log(oResult['data']);
-
-                // 建立excel
-                var oWorkbook = XLSX.utils.book_new();
-
-                var oSheet = XLSX.utils.json_to_sheet(oResult['data'], {
-                    // skipHeader: true,
-                });
-
-                oSheet['!merges'] = [
-                    {
-                        s: {r: 0, c: 0},
-                        e: {r: 0, c: 6},
-                    },
-                    {
-                        s: {r: 1, c: 0},
-                        e: {r: 1, c: 6},
-                    },
-                ];
-
-                // 將工作表塞入excel
-                XLSX.utils.book_append_sheet(oWorkbook, oSheet, 'sheet_name_1');
-
-                // 產出excel
-                XLSX.writeFile(oWorkbook, 'workbook_name.xlsx');
-            }
-        }).catch(oReason => {
-            console.log(oReason);
-        }).finally(() => {
-        });
-    }
-
-    // Interface --------------------
-    async function getData(sFuncName) {
-        var vRtn = [];
-
-        const oAccessTokenResult = await getAccessToken();
-        if ('OK' === oAccessTokenResult['status']) {
-            var oParm = [];
-            oParm['accesstoken'] = oAccessTokenResult['accesstoken'];
-
-            switch (sFuncName) {
-                case 'getProperty_CoreLiteracy':
-                    vRtn = await getProperty_CoreLiteracy(oParm);
-                    break;
-                case 'getScienceLiteracyExport':
-                    vRtn = await getScienceLiteracyExport(oParm);
-                    break;
-            }
+        if ("success" === oResult["status"]) {
+          // oResult['data']
+          // Do Something
         }
+      })
+      .catch((oReason) => {
+        console.log(oReason);
+      })
+      .finally(() => {});
+  }
 
-        return vRtn;
-    }
+  function downloadCoreLiteracyExcel() {
+    var sFuncName = "getScienceLiteracyExport";
+    getData(sFuncName)
+      .then((oResult) => {
+        console.log(oResult);
 
+        if ("success" === oResult["status"]) {
+          // console.log(oResult['data']);
 
-    // API --------------------
-    function getAccessToken() {
-        $.LoadingOverlay('show');
+          // 建立excel
+          var oWorkbook = XLSX.utils.book_new();
 
-        return $.ajax({
-            type: 'POST',
-            url: 'https://adaptive-learning.ntcu.edu.tw/aialtest/ADLAPI/v2/token',
-            dataType: 'JSON',
-            data: {
-                'data': sTokenDataValue,
+          var oSheet = XLSX.utils.json_to_sheet(oResult["data"], {
+            // skipHeader: true,
+          });
+
+          oSheet["!merges"] = [
+            {
+              s: { r: 0, c: 0 },
+              e: { r: 0, c: 6 },
             },
-        }).done(function(result) {
-            // console.log(result);
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            // console.log(jqXHR, textStatus, errorThrown);
-        }).always(function () {
-            $.LoadingOverlay('hide');
-        });
-    }
-
-    function getProperty_CoreLiteracy(oParm) {
-        $.LoadingOverlay('show');
-
-        return $.ajax({
-            type: 'POST',
-            url: 'https://adaptive-learning.ntcu.edu.tw/aialtest/ADLAPI/science_literacy/report',
-            dataType: 'JSON',
-            data: {
-                'accesstoken': oParm['accesstoken'],
-                'property_coreliteracy': 1,
+            {
+              s: { r: 1, c: 0 },
+              e: { r: 1, c: 6 },
             },
-        }).done(function(result) {
-            // console.log(result);
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            // console.log(jqXHR, textStatus, errorThrown);
-        }).always(function () {
-            $.LoadingOverlay('hide');
-        });
+          ];
+
+          // 將工作表塞入excel
+          XLSX.utils.book_append_sheet(oWorkbook, oSheet, "sheet_name_1");
+
+          // 產出excel
+          XLSX.writeFile(oWorkbook, "workbook_name.xlsx");
+        }
+      })
+      .catch((oReason) => {
+        console.log(oReason);
+      })
+      .finally(() => {});
+  }
+
+  // Interface --------------------
+  async function getData(sFuncName) {
+    var vRtn = [];
+
+    const oAccessTokenResult = await getAccessToken();
+    if ("OK" === oAccessTokenResult["status"]) {
+      var oParm = [];
+      oParm["accesstoken"] = oAccessTokenResult["accesstoken"];
+
+      switch (sFuncName) {
+        case "getProperty_CoreLiteracy":
+          vRtn = await getProperty_CoreLiteracy(oParm);
+          break;
+        case "getScienceLiteracyExport":
+          vRtn = await getScienceLiteracyExport(oParm);
+          break;
+      }
     }
 
-    function getScienceLiteracyExport(oParm) {
-        $.LoadingOverlay('show');
+    return vRtn;
+  }
 
-        return $.ajax({
-            type: 'POST',
-            url: 'https://adaptive-learning.ntcu.edu.tw/aialtest/ADLAPI/science_literacy/report',
-            dataType: 'JSON',
-            data: {
-                'accesstoken': oParm['accesstoken'],
-                'getscienceliteracyexport': 1,
-            },
-        }).done(function(result) {
-            // console.log(result);
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            // console.log(jqXHR, textStatus, errorThrown);
-        }).always(function () {
-            $.LoadingOverlay('hide');
-        });
-    }
+  // API --------------------
+  function getAccessToken() {
+    $.LoadingOverlay("show");
+
+    return $.ajax({
+      type: "POST",
+      url: "https://adaptive-learning.ntcu.edu.tw/aialtest/ADLAPI/v2/token",
+      dataType: "JSON",
+      data: {
+        data: sTokenDataValue,
+      },
+    })
+      .done(function (result) {
+        // console.log(result);
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        // console.log(jqXHR, textStatus, errorThrown);
+      })
+      .always(function () {
+        $.LoadingOverlay("hide");
+      });
+  }
+
+  function getProperty_CoreLiteracy(oParm) {
+    $.LoadingOverlay("show");
+
+    return $.ajax({
+      type: "POST",
+      url: "https://adaptive-learning.ntcu.edu.tw/aialtest/ADLAPI/science_literacy/report",
+      dataType: "JSON",
+      data: {
+        accesstoken: oParm["accesstoken"],
+        property_coreliteracy: 1,
+      },
+    })
+      .done(function (result) {
+        // console.log(result);
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        // console.log(jqXHR, textStatus, errorThrown);
+      })
+      .always(function () {
+        $.LoadingOverlay("hide");
+      });
+  }
+
+  function getScienceLiteracyExport(oParm) {
+    $.LoadingOverlay("show");
+
+    return $.ajax({
+      type: "POST",
+      url: "https://adaptive-learning.ntcu.edu.tw/aialtest/ADLAPI/science_literacy/report",
+      dataType: "JSON",
+      data: {
+        accesstoken: oParm["accesstoken"],
+        getscienceliteracyexport: 1,
+      },
+    })
+      .done(function (result) {
+        // console.log(result);
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        // console.log(jqXHR, textStatus, errorThrown);
+      })
+      .always(function () {
+        $.LoadingOverlay("hide");
+      });
+  }
 </script>
