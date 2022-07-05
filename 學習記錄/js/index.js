@@ -18,7 +18,13 @@ $(document).ready(async function () {
   // 當按下搜尋按鈕
   $(document).on("click", ".search-btn", async function () {
     $.LoadingOverlay("show");
-    let getScienceLiteracyData = await getData("getData_ScienceLiteracy");
+    let getScienceLiteracyData = await getData("getData_ScienceLiteracy", {
+      coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
+      explorelearning: $("#explorelearning-selector > .valueShow").data(
+        "value"
+      ),
+      searchtext: $("#searchtext").val(),
+    });
     $("#scienceLiteracy-history-row").html(
       tmpl("scienceLiteracy_history_row_template", {
         data: getScienceLiteracyData["data"],
@@ -28,7 +34,9 @@ $(document).ready(async function () {
   });
 
   // 當按下下載學習紀錄
-  $(document).on("click", "#download_history", function () {
+  $(document).on("click", "#download_history", async function () {
+    $.LoadingOverlay("show");
+    let getScienceLiteracyData = await getData("getData_ScienceLiteracy");
     const buttonBig = [
       {
         buttonText: "下載學習紀錄",
@@ -38,10 +46,15 @@ $(document).ready(async function () {
     ];
     modalBoxBig(
       "教育部因才網",
-      tmpl("scienceLiteracy_history_download_modal_template", { data: {} }),
+      tmpl("scienceLiteracy_history_download_modal_template", {
+        data: {
+          scienceLiteracyData: getScienceLiteracyData["data"],
+        },
+      }),
       buttonBig,
       true
     );
+    $.LoadingOverlay("hide");
   });
 
   // 查看過往紀錄
@@ -79,7 +92,7 @@ $(document).ready(async function () {
   $.LoadingOverlay("hide");
 });
 
-async function getData(sFuncName) {
+async function getData(sFuncName, data = {}) {
   var vRtn = [];
 
   const oAccessTokenResult = await getAccessToken();
@@ -95,7 +108,7 @@ async function getData(sFuncName) {
         vRtn = await getOption_ExploreLearning(oParm);
         break;
       case "getData_ScienceLiteracy":
-        vRtn = await getData_ScienceLiteracy(oParm);
+        vRtn = await getData_ScienceLiteracy(oParm, data);
         break;
     }
   }

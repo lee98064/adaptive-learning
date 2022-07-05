@@ -50,7 +50,7 @@
                   <div class="input-group">
                     <h4>試題編號或名稱:</h4>
                     <div class="input-box">
-                      <input type="text">
+                      <input type="text" id="searchtext">
                       <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                   </div>
@@ -161,6 +161,17 @@
     ></script>
 
     <script type="text/html" id="scienceLiteracy_history_row_template">
+      <% if(data.length < 1){ %> 
+        <div class="scienceLiteracy-history-row">
+          <div class="scienceLiteracy-history-row-title">
+            <h4>
+              <font color="#E00">
+                尚未有作答紀錄!!
+              </font>
+            </h4>
+          </div>
+        </div>
+      <% } %>
       <% for ( var i = 0; i < data.length; i++ ) { %>
         <div class="scienceLiteracy-history-row">
           <div class="scienceLiteracy-history-row-title">

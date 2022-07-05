@@ -47,7 +47,7 @@ async function getOption_ExploreLearning(oParm) {
 }
 
 // 取得學習紀錄
-async function getData_ScienceLiteracy(oParm) {
+async function getData_ScienceLiteracy(oParm, data) {
   return $.ajax({
     type: "POST",
     url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
@@ -55,10 +55,7 @@ async function getData_ScienceLiteracy(oParm) {
     data: {
       accesstoken: oParm["accesstoken"],
       getscienceliteracy: 1,
-      coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
-      explorelearning: $("#explorelearning-selector > .valueShow").data(
-        "value"
-      ),
+      ...data,
     },
   });
 }
