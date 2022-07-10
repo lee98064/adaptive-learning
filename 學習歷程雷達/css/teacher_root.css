@@ -1,0 +1,23 @@
+/* è€å¸«èº«åˆ†é¡è‰²è¨­å®š */
+
+:root {
+	--main-color : #3EB0C6;
+	--main-bright : #EDF9FA;
+	--main-light : #CBE5E9;
+	--main-gloomy : #6BA0A8;
+	--main-dark : #3F5860;
+	--main-active : #09A2DD;
+
+	--secondary-color : #FFF2AF;
+  --secondary-light : #FFFADF;
+
+	--contrast-light : #FFCC98;
+	--contrast-color : #EF915F;
+	--contrast-dark : #D65E1D;
+
+	--confirm-color : #69C328;
+	--confirm-dark : #519222;
+
+	--distinct-color : #D15375;
+	--distinct-dark : #A82C4D;
+}

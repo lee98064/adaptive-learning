@@ -1,0 +1,156 @@
+@import url("./utinity.css");
+html {
+  overflow-y: auto !important;
+}
+
+* {
+  margin: 0px;
+  padding: 0;
+}
+
+canvas {
+  border: none;
+}
+
+.container {
+  max-width: 1636px;
+}
+
+.scienceLiteracyStatistics-area {
+  margin-bottom: 20px;
+}
+.scienceLiteracyStatistics-area .big-title {
+  background-color: var(--main-color);
+  color: var(--main-bright);
+  text-align: center;
+  padding: 5px;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 12px;
+}
+
+.scienceLiteracyStatistics-data {
+  padding: 0px 10px;
+  display: grid;
+}
+.scienceLiteracyStatistics-data.type-1, .scienceLiteracyStatistics-data.type-2, .scienceLiteracyStatistics-data.type-3 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.scienceLiteracyStatistics-data.type-1 .chart-container, .scienceLiteracyStatistics-data.type-2 .chart-container, .scienceLiteracyStatistics-data.type-3 .chart-container {
+  min-height: 290px;
+  grid-column: 1/3;
+}
+.scienceLiteracyStatistics-data.type-2 .sub-title {
+  grid-column: 1/3;
+  text-align: center;
+}
+.scienceLiteracyStatistics-data .card {
+  display: flex;
+  align-self: flex-start;
+}
+.scienceLiteracyStatistics-data .card .card-body {
+  width: 100%;
+  font-size: 12px;
+  border: 1px solid #848484;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-title {
+  padding: 5px;
+  text-align: center;
+  font-size: 13px;
+  border-bottom: 1px solid #848484;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-info {
+  padding: 4px 10px;
+  font-size: inherit;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-info > span {
+  display: block;
+  font-size: inherit;
+  line-height: 166.3%;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-info > span:nth-child(1), .scienceLiteracyStatistics-data .card .card-body .card-info > span:nth-child(2) {
+  text-decoration: underline;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-info > span.wrong {
+  color: #f00;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-info > span > .green-text {
+  color: var(--main-color);
+  font-size: inherit;
+}
+.scienceLiteracyStatistics-data .card .card-body .card-info > span i {
+  font-size: inherit;
+}
+.scienceLiteracyStatistics-data .card .card-body .more {
+  padding: 10px 10px;
+  border-top: 1px solid #848484;
+  font-size: inherit;
+  cursor: pointer;
+}
+.scienceLiteracyStatistics-data .card .card-body .more i {
+  font-size: inherit;
+  transition: all 0.3s;
+  margin-left: 3px;
+}
+.scienceLiteracyStatistics-data .card .card-body .more i.active {
+  transform: rotate(90deg);
+}
+.scienceLiteracyStatistics-data .card .card-body .more-info {
+  display: none;
+  padding: 0px 10px 5px 10px;
+  font-size: inherit;
+  line-height: 166.3%;
+  text-align: justify;
+}
+
+@media (min-width: 1200px) {
+  .scienceLiteracyStatistics-data {
+    padding: 0px 30px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+  .scienceLiteracyStatistics-data.type-1 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+  .scienceLiteracyStatistics-data.type-1 .chart-container {
+    min-height: 500px;
+    grid-column: 1/4;
+  }
+  .scienceLiteracyStatistics-data.type-2 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    grid-row-gap: 10px;
+  }
+  .scienceLiteracyStatistics-data.type-2 .sub-title {
+    grid-column: 2/5;
+    text-align: left;
+  }
+  .scienceLiteracyStatistics-data.type-2 .chart-container {
+    min-height: 290px;
+    grid-column: 1/2;
+  }
+  .scienceLiteracyStatistics-data.type-3 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    grid-row-gap: 10px;
+  }
+  .scienceLiteracyStatistics-data.type-3 .sub-title {
+    grid-column: 2/5;
+    text-align: left;
+  }
+  .scienceLiteracyStatistics-data.type-3 .chart-container {
+    min-height: 290px;
+    grid-column: 1/5;
+  }
+  .scienceLiteracyStatistics-data .card {
+    font-size: 19px;
+  }
+  .scienceLiteracyStatistics-data .card .card-body {
+    font-size: 19px;
+  }
+  .scienceLiteracyStatistics-data .card .card-body .card-title {
+    font-size: 19px;
+  }
+}/*# sourceMappingURL=index.css.map */
