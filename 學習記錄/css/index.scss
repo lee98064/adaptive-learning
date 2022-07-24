@@ -75,15 +75,40 @@ html {
   grid-gap: 20px;
 }
 
-.contant-custom {
+.contant-custom,
+.contant-collapse {
+  display: block;
   padding: 14px;
-  vertical-align: top;
   box-shadow: 0px 0px 5px #30313345;
   background: #fff;
   padding: 10px 10px;
   color: #5c5c5c;
   font-size: 19px;
   margin-bottom: 20px;
+}
+
+.contant-collapse {
+  position: relative;
+  margin-bottom: 0px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.active {
+    & i {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  & h3 {
+    text-align: center;
+  }
+  & i {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 20px;
+    transition: all 0.3s;
+  }
 }
 
 .search-btn {
@@ -100,5 +125,13 @@ html {
   }
   .search-btn {
     width: 100%;
+  }
+
+  .contant-custom {
+    display: block !important;
+  }
+
+  .contant-collapse {
+    display: none;
   }
 }

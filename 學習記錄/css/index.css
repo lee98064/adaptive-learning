@@ -304,6 +304,18 @@
   margin: 1rem;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
 .md-d-none {
   display: block;
 }
@@ -395,15 +407,36 @@ html {
   grid-gap: 20px;
 }
 
-.contant-custom {
+.contant-custom,
+.contant-collapse {
+  display: block;
   padding: 14px;
-  vertical-align: top;
   box-shadow: 0px 0px 5px rgba(48, 49, 51, 0.2705882353);
   background: #fff;
   padding: 10px 10px;
   color: #5c5c5c;
   font-size: 19px;
   margin-bottom: 20px;
+}
+
+.contant-collapse {
+  position: relative;
+  margin-bottom: 0px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.contant-collapse.active i {
+  transform: translateY(-50%) rotate(90deg);
+}
+.contant-collapse h3 {
+  text-align: center;
+}
+.contant-collapse i {
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  right: 20px;
+  transition: all 0.3s;
 }
 
 .search-btn {
@@ -420,5 +453,11 @@ html {
   }
   .search-btn {
     width: 100%;
+  }
+  .contant-custom {
+    display: block !important;
+  }
+  .contant-collapse {
+    display: none;
   }
 }/*# sourceMappingURL=index.css.map */

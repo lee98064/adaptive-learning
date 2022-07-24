@@ -10,6 +10,11 @@ $(document).ready(async function () {
   _12About = await get12About();
   _SO4BJ = await getSO4BJ();
 
+  $(document).on("click", ".contant-collapse", function () {
+    $(this).toggleClass("active");
+    $(this).siblings(".contant-custom").slideToggle("slow");
+  });
+
   $(document).on("click", ".scienceLiteracy-history-row-title", function () {
     $(this).siblings(".scienceLiteracy-history-row-data").slideToggle("slow");
     $(this).parent(".scienceLiteracy-history-row").toggleClass("active");
