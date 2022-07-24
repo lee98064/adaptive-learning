@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  // 全選動作
   $(document).on("click", ".filterBox-group label", function () {
     var checkBox = $(this).siblings("input[type='checkbox']");
     checkBox.prop("checked", !checkBox.prop("checked"));
@@ -10,6 +11,10 @@ $(document).ready(function () {
         .siblings(".filterBox-checkBox-group-list")
         .children(".filterBox-checkBox-group")
         .each(function (index, element) {
+          if ($(this).css("display") === "none") {
+            return;
+          }
+
           $(this)
             .children("input[type='checkbox']")
             .prop("checked", checkBox.prop("checked"));
@@ -17,6 +22,28 @@ $(document).ready(function () {
     }
   });
 
+  // 搜尋題目
+  $(document).on("click", "#filterBox-button", function () {
+    var keyword = $("#filterBox-input").val();
+    $("#history_download_item_filter .filterBox-checkBox-group").each(function (
+      index,
+      element
+    ) {
+      if (keyword === "") {
+        $(this).show();
+        return;
+      }
+
+      var labelText = $(this, "label").text();
+      if (labelText.search(keyword) == -1) {
+        $(this).hide();
+      } else {
+        $(this).show();
+      }
+    });
+  });
+
+  // 開始下載
   $(document).on("click", "#start_download", function () {
     initProperty();
   });
