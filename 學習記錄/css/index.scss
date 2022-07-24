@@ -1,6 +1,6 @@
-@import url("./scienceLiteracy.css");
-@import url("./downloadModal.css");
-@import url("./utinity.css");
+@import "./downloadModal";
+@import "./scienceLiteracy";
+@import "./utinity";
 // 嵌入至正式區時需要拿掉
 html {
   overflow-y: auto !important;
