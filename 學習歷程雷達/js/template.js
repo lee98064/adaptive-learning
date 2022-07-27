@@ -71,6 +71,10 @@ function get12AboutStr(core_code) {
   return str;
 }
 
+function get12AboutDesc(key) {
+  return _12About[key]["desc"];
+}
+
 function getSO4BJStr(learning_content) {
   data = learning_content.split("_");
 
@@ -86,6 +90,10 @@ function getSO4BJStr(learning_content) {
   if (str == "") str = "此題尚未提供探究學習內容。";
 
   return str;
+}
+
+function getSO4BJDesc(key) {
+  return _SO4BJ[key]["desc"];
 }
 
 function formatTime2HMSMs(time) {
@@ -131,4 +139,8 @@ function formatTime2HMSMs(time) {
   //     result += "," + millisecond;
   //   }
   return result;
+}
+
+function correctRateToNumber(correct_rate) {
+  return parseFloat(correct_rate) * 100.0;
 }

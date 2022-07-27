@@ -1,4 +1,63 @@
-@import url("./utinity.css");
+.d-block {
+  display: block;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-3 {
+  margin: 1rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.md-d-none {
+  display: block;
+}
+
+.sm-d-none {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .sm-d-none {
+    display: block;
+  }
+  .md-d-none {
+    display: none;
+  }
+}
 html {
   overflow-y: auto !important;
 }
@@ -12,8 +71,24 @@ canvas {
   border: none;
 }
 
-.container {
-  max-width: 1636px;
+.container#scienceLiteracyStatistics_container {
+  max-width: 1306px;
+}
+
+.scienceLiteracyStatistics-summary {
+  margin: 15px 0px;
+}
+.scienceLiteracyStatistics-summary h3 {
+  font-size: 12px;
+  margin: 5px 0px;
+}
+.scienceLiteracyStatistics-summary .green-text,
+.scienceLiteracyStatistics-summary .red-text {
+  color: var(--main-color);
+  font-size: inherit;
+}
+.scienceLiteracyStatistics-summary .red-text {
+  color: #f00;
 }
 
 .scienceLiteracyStatistics-area {
@@ -78,6 +153,7 @@ canvas {
 .scienceLiteracyStatistics-data .card .card-body .card-info > span > .green-text {
   color: var(--main-color);
   font-size: inherit;
+  cursor: pointer;
 }
 .scienceLiteracyStatistics-data .card .card-body .card-info > span i {
   font-size: inherit;
@@ -105,21 +181,38 @@ canvas {
 }
 
 @media (min-width: 1200px) {
+  .scienceLiteracyStatistics-summary {
+    margin: 40px 0px;
+  }
+  .scienceLiteracyStatistics-summary h3 {
+    font-size: 19px;
+    margin: 10px 0px;
+  }
   .scienceLiteracyStatistics-data {
     padding: 0px 30px;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 30px;
   }
   .scienceLiteracyStatistics-data.type-1 {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 30px;
   }
   .scienceLiteracyStatistics-data.type-1 .chart-container {
     min-height: 500px;
-    grid-column: 1/4;
+    grid-column: 1/6;
+    margin-bottom: -80px;
+  }
+  .scienceLiteracyStatistics-data.type-1 .card:nth-child(2) {
+    grid-column: 2/3;
+  }
+  .scienceLiteracyStatistics-data.type-1 .card:nth-child(3) {
+    grid-column: 3/4;
+  }
+  .scienceLiteracyStatistics-data.type-1 .card:nth-child(4) {
+    grid-column: 4/5;
   }
   .scienceLiteracyStatistics-data.type-2 {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 2fr repeat(3, 1fr);
     grid-gap: 30px;
     grid-row-gap: 10px;
   }
