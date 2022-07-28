@@ -141,6 +141,9 @@
   grid-template-columns: 1fr 0.3fr;
   cursor: pointer;
 }
+.scienceLiteracy-history-row-title h4 {
+  font-weight: normal;
+}
 .scienceLiteracy-history-row-title i {
   justify-self: end;
   margin-right: 20px;
@@ -170,6 +173,7 @@
   font-weight: 400;
   font-size: 15px;
   line-height: 166.3%;
+  color: #707070;
 }
 .scienceLiteracy-history-row-data .row-data-number .row-data-number-title {
   margin-bottom: 10px;
@@ -189,11 +193,11 @@
   grid-template-columns: 1fr 0.2fr;
 }
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-title h4 {
-  font-weight: 400;
   font-size: 14px;
   line-height: 166.3%;
   color: #707070;
   background-color: #fff;
+  font-weight: normal;
 }
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-title h4:nth-child(1) {
   padding-left: 10px;
@@ -217,6 +221,8 @@
   font-size: 13px;
   word-break: break-all;
   word-wrap: break-word;
+  color: #707070;
+  font-weight: normal;
 }
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-data h4.error-answer,
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-data p.error-answer {
@@ -418,6 +424,10 @@ html {
   font-size: 19px;
   margin-bottom: 20px;
 }
+.contant-custom h4,
+.contant-collapse h4 {
+  font-weight: normal;
+}
 
 .contant-collapse {
   position: relative;
@@ -430,6 +440,7 @@ html {
 }
 .contant-collapse h3 {
   text-align: center;
+  font-weight: normal;
 }
 .contant-collapse i {
   top: 50%;
