@@ -19,7 +19,7 @@ const chart_datasets = [
     ],
   },
   {
-    labels: ["身心素養與自我精進", "系統思考與解決問題", "規劃執行與創新應變"],
+    labels: ["A1", "A2", "A3"],
     datasets: [
       {
         label: "自主行動",

@@ -157,7 +157,7 @@ const chart_options = [
         fontSize: 12,
       },
       pointLabels: {
-        fontSize: 8,
+        fontSize: 19,
       },
     },
     maintainAspectRatio: false,
