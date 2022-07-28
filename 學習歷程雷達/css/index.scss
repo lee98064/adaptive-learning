@@ -153,18 +153,75 @@ canvas {
 
       & .more-info {
         display: none;
-        padding: 0px 10px 5px 10px;
+        padding: 0px 20px 5px 20px;
         font-size: inherit;
         line-height: 166.3%;
         text-align: justify;
+        font-weight: normal;
       }
     }
   }
 }
-@media (min-width: 1024px) {
+
+@media (min-width: 768px) and (max-width: 1261px) {
+  .scienceLiteracyStatistics-summary {
+    margin: 20px 0px;
+    h3 {
+      font-size: 19px;
+      margin: 10px 0px;
+    }
+  }
+
+  .scienceLiteracyStatistics-area {
+    .big-title {
+      font-size: 19px;
+    }
+  }
+
+  .scienceLiteracyStatistics-data {
+    &.type-1 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+      margin-bottom: 70px;
+      & .chart-container {
+        min-height: 500px;
+        grid-column: 1/4;
+        margin-bottom: -80px;
+      }
+    }
+
+    &.type-2 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+      grid-row-gap: 10px;
+      margin-bottom: 80px;
+      & .sub-title {
+        font-size: 19px;
+        grid-column: 2/3;
+        text-align: center;
+      }
+      & .chart-container {
+        min-height: 290px;
+        grid-column: 1/4;
+      }
+    }
+
+    & .card {
+      font-size: 19px;
+
+      & .card-body {
+        font-size: 19px;
+        & .card-title {
+          padding: 10px;
+          font-size: 19px;
+          line-height: 166.8%;
+        }
+      }
+    }
+  }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1262px) {
   .scienceLiteracyStatistics-summary {
     margin: 40px 0px;
     h3 {
@@ -197,6 +254,7 @@ canvas {
       & .card:nth-child(2) {
         grid-column: 2/3;
       }
+
       & .card:nth-child(3) {
         grid-column: 3/4;
       }
