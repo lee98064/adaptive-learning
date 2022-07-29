@@ -5,7 +5,7 @@ var proxy = "https://proxy.leetools.eu.org";
 var chart_data = {};
 
 $(document).ready(async function () {
-  // $.LoadingOverlay("show");
+  $.LoadingOverlay("show");
   // $.LoadingOverlay("hide");
   let getScienceLiteracyData = await getData("getStatistics_ScienceLiteracy");
 
@@ -37,7 +37,7 @@ $(document).ready(async function () {
     $(this).children("i").toggleClass("active");
   });
 
-  // $.LoadingOverlay("hide");
+  $.LoadingOverlay("hide");
 });
 
 function drawRadarChart() {
