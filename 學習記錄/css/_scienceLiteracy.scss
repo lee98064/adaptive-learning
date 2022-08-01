@@ -24,7 +24,7 @@
   cursor: default;
   & h4 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 166.3%;
     margin: 0;
   }
@@ -150,8 +150,12 @@
   }
 
   .row-data-more {
-    height: 40px;
-    font-size: 19px;
+    height: 30px;
+    font-size: 12px;
+
+    & i {
+      font-size: inherit;
+    }
 
     &.show {
       &::after {
@@ -161,6 +165,36 @@
 
     &::after {
       content: "查看本題過往作答歷史";
+    }
+  }
+}
+
+// 平板電腦共用
+@media (min-width: 768px) {
+  .scienceLiteracy-history-big-title,
+  .scienceLiteracy-history-row-title {
+    & h4 {
+      font-size: 19px;
+    }
+  }
+
+  .scienceLiteracy-history-row-data {
+    .row-data-table {
+      .row-data-table-data {
+        p {
+          font-size: 15px;
+        }
+        & button {
+          margin: 0;
+          font-size: 15px;
+          height: 30px;
+        }
+      }
+    }
+
+    .row-data-more {
+      height: 40px;
+      font-size: 19px;
     }
   }
 }

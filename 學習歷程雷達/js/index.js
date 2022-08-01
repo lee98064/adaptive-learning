@@ -28,9 +28,9 @@ $(document).ready(async function () {
 
   drawRadarChart();
 
-  $(window, document).resize(function () {
-    drawRadarChart();
-  });
+  // $(window, document).resize(function () {
+  //   drawRadarChart();
+  // });
 
   $(".more").click(function (e) {
     $(this).siblings(".more-info").slideToggle("slow");

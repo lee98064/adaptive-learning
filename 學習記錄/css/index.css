@@ -59,7 +59,7 @@
   height: 16px;
   width: 16px;
   left: 2px;
-  font-size: 5px;
+  font-size: 12px;
   text-align: center;
 }
 .filterBox .filterBox-checkBox-group-list {
@@ -86,7 +86,7 @@
   height: 16px;
   width: 16px;
   left: 2px;
-  font-size: 5px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -132,7 +132,7 @@
 .scienceLiteracy-history-big-title h4,
 .scienceLiteracy-history-row-title h4 {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 166.3%;
   margin: 0;
 }
@@ -236,8 +236,11 @@
   display: none;
 }
 .scienceLiteracy-history-row-data .row-data-more {
-  height: 40px;
-  font-size: 19px;
+  height: 30px;
+  font-size: 12px;
+}
+.scienceLiteracy-history-row-data .row-data-more i {
+  font-size: inherit;
 }
 .scienceLiteracy-history-row-data .row-data-more.show::after {
   content: "隱藏本題過往作答歷史";
@@ -246,6 +249,24 @@
   content: "查看本題過往作答歷史";
 }
 
+@media (min-width: 768px) {
+  .scienceLiteracy-history-big-title h4,
+.scienceLiteracy-history-row-title h4 {
+    font-size: 19px;
+  }
+  .scienceLiteracy-history-row-data .row-data-table .row-data-table-data p {
+    font-size: 15px;
+  }
+  .scienceLiteracy-history-row-data .row-data-table .row-data-table-data button {
+    margin: 0;
+    font-size: 15px;
+    height: 30px;
+  }
+  .scienceLiteracy-history-row-data .row-data-more {
+    height: 40px;
+    font-size: 19px;
+  }
+}
 @media (min-width: 1024px) {
   .scienceLiteracy-history-big-title {
     grid-template-columns: 1fr 1fr 0.3fr;
@@ -348,27 +369,37 @@ html {
 
 .container {
   height: 100%;
-  padding: 10px;
 }
 
 .selector-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 .selector-group .selector {
   display: block;
   width: 100%;
+  font-size: inherit;
+}
+.selector-group .selector span,
+.selector-group .selector li {
+  font-size: inherit;
 }
 .selector-group h4 {
+  font-size: inherit;
   margin-right: 20px;
 }
 
 .input-group {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.input-group h4 {
+  font-size: inherit;
 }
 .input-group .input-box {
   position: relative;
@@ -383,6 +414,7 @@ html {
   padding-left: 15px;
   padding-right: 30px;
   color: #5c5c5c;
+  font-size: inherit;
 }
 .input-group .input-box i {
   right: 10px;
@@ -390,15 +422,24 @@ html {
   position: absolute;
   font-size: 15px;
 }
+.input-group .input-box button {
+  font-size: inherit;
+}
+
+#download_history {
+  font-size: 14px;
+}
 
 .pageTab .pageTabList {
   border: 0px;
   box-sizing: border-box;
   margin-bottom: 10px;
+  font-size: 14px;
 }
 .pageTab .pageTabList li {
-  flex-grow: 1;
+  flex: 1;
   text-align: center;
+  font-size: inherit;
   margin: 0px;
   border-radius: 0px;
   border-bottom: 1px solid #ebebeb;
@@ -421,7 +462,7 @@ html {
   background: #fff;
   padding: 10px 10px;
   color: #5c5c5c;
-  font-size: 19px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 .contant-custom h4,
@@ -439,6 +480,7 @@ html {
   transform: translateY(-50%) rotate(90deg);
 }
 .contant-collapse h3 {
+  font-size: inherit;
   text-align: center;
   font-weight: normal;
 }
@@ -457,10 +499,65 @@ html {
 }
 
 @media (min-width: 768px) {
+  .pageTab .pageTabList {
+    font-size: 19px;
+  }
+  .selector-group {
+    font-size: 19px;
+  }
+  .contant-collapse {
+    font-size: 19px;
+  }
+  .input-group {
+    font-size: 19px;
+  }
+  #download_history {
+    font-size: 19px;
+  }
+  .search-btn {
+    font-size: 19px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1261px) {
+  #content1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+  }
+  .contant-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    padding-bottom: 20px;
+  }
+  .contant-custom hr {
+    display: none;
+  }
+  .contant-custom .search-btn {
+    width: 100%;
+    grid-column: 3/4;
+    margin-left: auto;
+  }
+  #download_history {
+    width: 31%;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}
+@media (min-width: 1262px) {
   #content1 {
     display: grid;
     grid-template-columns: 0.5fr 3fr;
     grid-gap: 40px;
+  }
+  .selector-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .input-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   .search-btn {
     width: 100%;

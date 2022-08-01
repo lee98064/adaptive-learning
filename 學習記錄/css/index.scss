@@ -8,28 +8,42 @@ html {
 
 .container {
   height: 100%;
-  padding: 10px;
 }
 
 .selector-group {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+
   & .selector {
     display: block;
     width: 100%;
+    font-size: inherit;
+
+    & span,
+    li {
+      font-size: inherit;
+    }
   }
 
   & h4 {
+    font-size: inherit;
     margin-right: 20px;
   }
 }
 
 .input-group {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+
+  & h4 {
+    font-size: inherit;
+  }
+
   & .input-box {
     position: relative;
     & input {
@@ -42,6 +56,7 @@ html {
       padding-left: 15px;
       padding-right: 30px;
       color: #5c5c5c;
+      font-size: inherit;
     }
     & i {
       right: 10px;
@@ -49,16 +64,26 @@ html {
       position: absolute;
       font-size: 15px;
     }
+
+    & button {
+      font-size: inherit;
+    }
   }
+}
+
+#download_history {
+  font-size: 14px;
 }
 
 .pageTab .pageTabList {
   border: 0px;
   box-sizing: border-box;
   margin-bottom: 10px;
+  font-size: 14px;
   & li {
-    flex-grow: 1;
+    flex: 1;
     text-align: center;
+    font-size: inherit;
     margin: 0px;
     border-radius: 0px;
     border-bottom: 1px solid #ebebeb;
@@ -83,7 +108,7 @@ html {
   background: #fff;
   padding: 10px 10px;
   color: #5c5c5c;
-  font-size: 19px;
+  font-size: 14px;
   margin-bottom: 20px;
   & h4 {
     font-weight: normal;
@@ -103,6 +128,7 @@ html {
   }
 
   & h3 {
+    font-size: inherit;
     text-align: center;
     font-weight: normal;
   }
@@ -121,12 +147,84 @@ html {
   margin: auto;
 }
 
+// 電腦平板共用
 @media (min-width: 768px) {
+  .pageTab .pageTabList {
+    font-size: 19px;
+  }
+
+  .selector-group {
+    font-size: 19px;
+  }
+
+  .contant-collapse {
+    font-size: 19px;
+  }
+
+  .input-group {
+    font-size: 19px;
+  }
+
+  #download_history {
+    font-size: 19px;
+  }
+
+  .search-btn {
+    font-size: 19px;
+  }
+}
+
+// 平板版
+@media (min-width: 768px) and (max-width: 1261px) {
+  #content1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+  }
+
+  .contant-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    padding-bottom: 20px;
+
+    hr {
+      display: none;
+    }
+
+    & .search-btn {
+      width: 100%;
+      grid-column: 3/4;
+      margin-left: auto;
+    }
+  }
+
+  #download_history {
+    width: 31%;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}
+
+// 電腦版
+@media (min-width: 1262px) {
   #content1 {
     display: grid;
     grid-template-columns: 0.5fr 3fr;
     grid-gap: 40px;
   }
+
+  .selector-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   .search-btn {
     width: 100%;
   }
