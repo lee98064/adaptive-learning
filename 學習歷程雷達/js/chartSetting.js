@@ -131,7 +131,7 @@ const chart_default_data = {
 
 const chart_datasets = {
   三大核心面向雷達圖: {
-    labels: ["自主行動", "社會參與", "溝工互動"],
+    labels: ["自主行動", "社會參與", "溝通互動"],
     datasets: [
       {
         label: "三大核心面向",
