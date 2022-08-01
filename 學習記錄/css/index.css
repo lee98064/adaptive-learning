@@ -43,12 +43,6 @@
   outline: none;
   font-size: inherit;
 }
-.filterBox .filterBox-input-group input::-moz-placeholder {
-  color: #e5e5e5;
-}
-.filterBox .filterBox-input-group input:-ms-input-placeholder {
-  color: #e5e5e5;
-}
 .filterBox .filterBox-input-group input::placeholder {
   color: #e5e5e5;
 }
@@ -125,6 +119,7 @@
   .filterBox-group h4 {
     font-size: 19px;
   }
+
   .filterBox .filterBox-input-group {
     font-size: 19px;
   }
@@ -148,6 +143,7 @@
     max-height: 75vh;
     grid-template-columns: repeat(2, 1fr);
   }
+
   .filterBox-group {
     width: 100%;
   }
@@ -297,6 +293,7 @@
 .scienceLiteracy-history-row-title h4 {
     font-size: 19px;
   }
+
   .scienceLiteracy-history-row-data .row-data-table .row-data-table-data p {
     font-size: 15px;
   }
@@ -314,9 +311,11 @@
   .scienceLiteracy-history-big-title {
     grid-template-columns: 1fr 1fr 0.3fr;
   }
+
   .scienceLiteracy-history-row-title {
     grid-template-columns: 1fr 1fr 0.3fr;
   }
+
   .scienceLiteracy-history-row-data {
     grid-template-columns: 100px 4fr;
     grid-gap: 10px;
@@ -402,6 +401,7 @@
   .sm-d-none {
     display: block;
   }
+
   .md-d-none {
     display: none;
   }
@@ -501,7 +501,7 @@ html {
 .contant-collapse {
   display: block;
   padding: 14px;
-  box-shadow: 0px 0px 5px rgba(48, 49, 51, 0.2705882353);
+  box-shadow: 0px 0px 5px #30313345;
   background: #fff;
   padding: 10px 10px 20px 10px;
   color: #5c5c5c;
@@ -516,6 +516,7 @@ html {
 .contant-collapse {
   position: relative;
   margin-bottom: 0px;
+  padding: 10px 10px 10px 10px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -545,18 +546,23 @@ html {
   .pageTab .pageTabList {
     font-size: 19px;
   }
+
   .selector-group {
     font-size: 19px;
   }
+
   .contant-collapse {
     font-size: 19px;
   }
+
   .input-group {
     font-size: 19px;
   }
+
   #download_history {
     font-size: 19px;
   }
+
   .search-btn {
     font-size: 19px;
   }
@@ -567,6 +573,7 @@ html {
     grid-template-columns: 1fr;
     grid-gap: 40px;
   }
+
   .contant-custom {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -581,6 +588,7 @@ html {
     grid-column: 3/4;
     margin-left: auto;
   }
+
   #download_history {
     width: 31%;
     margin-left: auto;
@@ -593,21 +601,26 @@ html {
     grid-template-columns: 0.5fr 3fr;
     grid-gap: 40px;
   }
+
   .selector-group {
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
   .input-group {
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
   .search-btn {
     width: 100%;
   }
+
   .contant-custom {
     display: block !important;
   }
+
   .contant-collapse {
     display: none;
   }
-}/*# sourceMappingURL=index.css.map */
+}
