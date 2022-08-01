@@ -24,6 +24,7 @@ html {
     font-size: inherit;
 
     & span,
+    ul,
     li {
       font-size: inherit;
     }
@@ -45,6 +46,7 @@ html {
   }
 
   & .input-box {
+    font-size: inherit;
     position: relative;
     & input {
       display: block;

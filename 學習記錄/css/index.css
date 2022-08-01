@@ -428,6 +428,7 @@ html {
   font-size: inherit;
 }
 .selector-group .selector span,
+.selector-group .selector ul,
 .selector-group .selector li {
   font-size: inherit;
 }
@@ -445,6 +446,7 @@ html {
   font-size: inherit;
 }
 .input-group .input-box {
+  font-size: inherit;
   position: relative;
 }
 .input-group .input-box input {
