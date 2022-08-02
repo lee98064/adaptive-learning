@@ -432,10 +432,10 @@ canvas {
   border: none;
 }
 
-.container#scienceLiteracyStatistics_container {
+#scienceLiteracyStatistics_container {
   max-width: 1306px;
 }
-.container#scienceLiteracyStatistics_container .hr {
+#scienceLiteracyStatistics_container .hr {
   height: 1px;
   width: 100%;
   background-color: #e7e7e7;
