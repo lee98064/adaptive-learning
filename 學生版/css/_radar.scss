@@ -1,0 +1,320 @@
+@import "./utinity";
+// 嵌入至正式區時需要拿掉
+html {
+  overflow-y: auto !important;
+}
+
+* {
+  margin: 0px;
+  padding: 0;
+}
+
+canvas {
+  border: none;
+}
+
+.container#scienceLiteracyStatistics_container {
+  max-width: 1306px;
+
+  .hr {
+    height: 1px;
+    width: 100%;
+    background-color: #e7e7e7;
+    margin: 0px 0px 30px 0px;
+  }
+}
+
+.scienceLiteracyStatistics-summary {
+  margin: 15px 0px;
+  h3 {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 5px 0px;
+  }
+
+  & .green-text,
+  .red-text {
+    color: var(--main-color);
+    font-size: inherit;
+  }
+
+  & .red-text {
+    color: #f00;
+  }
+}
+
+.scienceLiteracyStatistics-area {
+  margin-bottom: 20px;
+  .big-title {
+    background-color: var(--main-color);
+    color: var(--main-bright);
+    text-align: center;
+    padding: 5px;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
+
+.scienceLiteracyStatistics-data {
+  padding: 0px 10px;
+  display: grid;
+
+  &.type-1,
+  &.type-2,
+  &.type-3 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 40px;
+    & .chart-container {
+      width: 100%;
+      min-height: 290px;
+      grid-column: 1/3;
+    }
+  }
+
+  &.type-2 {
+    & .sub-title {
+      font-size: 15px;
+      font-weight: normal;
+      color: #848484;
+      grid-column: 1/3;
+      text-align: center;
+    }
+  }
+
+  & .card {
+    display: flex;
+    align-self: flex-start;
+    & .card-body {
+      width: 100%;
+      font-size: 12px;
+      color: #848484;
+      border: 1px solid #848484;
+
+      & .card-title {
+        padding: 5px;
+        text-align: center;
+        font-size: 13px;
+        border-bottom: 1px solid #848484;
+        font-weight: normal;
+      }
+
+      & .card-info {
+        padding: 4px 20px;
+        font-size: inherit;
+        // border-bottom: 1px solid #848484;
+
+        & > span {
+          display: block;
+          font-size: inherit;
+          line-height: 166.3%;
+
+          &:nth-child(1),
+          &:nth-child(2) {
+            text-decoration: underline;
+          }
+
+          &.wrong {
+            color: #f00;
+          }
+
+          & > .green-text {
+            color: var(--main-color);
+            font-size: inherit;
+            cursor: pointer;
+          }
+
+          & i {
+            margin-left: 5px;
+            font-size: inherit;
+          }
+        }
+      }
+
+      & .more {
+        padding: 10px 20px;
+        color: #848484;
+        border-top: 1px solid #848484;
+        font-size: inherit;
+        line-height: 166.8%;
+        font-weight: normal;
+
+        cursor: pointer;
+        & i {
+          font-size: inherit;
+          transition: all 0.3s;
+          margin-left: 3px;
+          &.active {
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      & .more-info {
+        display: none;
+        padding: 0px 20px 10px 20px;
+        font-size: inherit;
+        line-height: 166.3%;
+        text-align: justify;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1261px) {
+  .scienceLiteracyStatistics-summary {
+    margin: 20px 0px;
+    h3 {
+      font-size: 19px;
+      margin: 10px 0px;
+    }
+  }
+
+  .scienceLiteracyStatistics-area {
+    .big-title {
+      font-size: 19px;
+    }
+  }
+
+  .scienceLiteracyStatistics-data {
+    &.type-1 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+      margin-bottom: 70px;
+      & .chart-container {
+        min-height: 400px;
+        grid-column: 1/4;
+        margin-bottom: -30px;
+      }
+    }
+
+    &.type-2 {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 30px;
+      grid-row-gap: 10px;
+      margin-bottom: 80px;
+      & .sub-title {
+        font-size: 19px;
+        grid-column: 2/3;
+        text-align: center;
+      }
+      & .chart-container {
+        min-height: 400px;
+        grid-column: 1/4;
+      }
+    }
+
+    &.type-3 {
+      & .chart-container {
+        min-height: 400px;
+        margin-bottom: 30px;
+      }
+    }
+
+    & .card {
+      font-size: 19px;
+
+      & .card-body {
+        font-size: 19px;
+        & .card-title {
+          padding: 10px;
+          font-size: 19px;
+          line-height: 166.8%;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1262px) {
+  .scienceLiteracyStatistics-summary {
+    margin: 40px 0px;
+    h3 {
+      font-size: 19px;
+      margin: 10px 0px;
+    }
+  }
+
+  .scienceLiteracyStatistics-area {
+    .big-title {
+      font-size: 19px;
+    }
+  }
+
+  .scienceLiteracyStatistics-data {
+    padding: 0px 0px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+
+    &.type-1 {
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 30px;
+      margin-bottom: 70px;
+      & .chart-container {
+        min-height: 500px;
+        grid-column: 1/6;
+        margin-bottom: -50px;
+      }
+
+      & .card:nth-child(2) {
+        grid-column: 2/3;
+      }
+
+      & .card:nth-child(3) {
+        grid-column: 3/4;
+      }
+      & .card:nth-child(4) {
+        grid-column: 4/5;
+      }
+    }
+
+    &.type-2 {
+      grid-template-columns: 1.8fr repeat(3, 1fr);
+      grid-gap: 30px;
+      grid-row-gap: 10px;
+      margin-bottom: 80px;
+      & .sub-title {
+        font-size: 19px;
+        grid-column: 2/5;
+        text-align: left;
+      }
+      & .chart-container {
+        min-height: 290px;
+        grid-column: 1/2;
+      }
+    }
+
+    &.type-3 {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 30px;
+      grid-row-gap: 10px;
+      margin-bottom: 70px;
+      & .sub-title {
+        grid-column: 2/5;
+        text-align: left;
+      }
+      & .chart-container {
+        min-height: 400px;
+        margin-top: 50px;
+        margin-bottom: 70px;
+        grid-column: 1/5;
+      }
+    }
+
+    & .card {
+      font-size: 19px;
+
+      & .card-body {
+        font-size: 19px;
+        & .card-title {
+          padding: 10px;
+          font-size: 19px;
+          line-height: 166.8%;
+        }
+      }
+    }
+  }
+}
