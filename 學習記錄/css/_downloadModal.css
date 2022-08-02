@@ -74,6 +74,7 @@
   left: 2px;
   font-size: 10px;
   text-align: center;
+  line-height: 150%;
 }
 .filterBox .filterBox-checkBox-group-list {
   height: 45vh;
@@ -104,6 +105,7 @@
   left: 2px;
   font-size: 10px;
   text-align: center;
+  line-height: 150%;
 }
 
 .ModalBoxContent {
@@ -122,17 +124,28 @@
   .filterBox .filterBox-input-group {
     font-size: 19px;
   }
-  .filterBox .filterBox-checkBox-selectAll, .filterBox .filterBox-checkBox-group-list {
+  .filterBox .filterBox-checkBox-selectAll {
     font-size: 19px;
   }
-  .filterBox .filterBox-checkBox-selectAll label::before, .filterBox .filterBox-checkBox-group-list label::before {
+  .filterBox .filterBox-checkBox-selectAll label::before {
     height: 18px;
     width: 18px;
   }
-  .filterBox .filterBox-checkBox-selectAll label::after, .filterBox .filterBox-checkBox-group-list label::after {
+  .filterBox .filterBox-checkBox-selectAll label::after {
     height: 16px;
     width: 16px;
     font-size: 12px;
+  }
+  .filterBox .filterBox-checkBox-group-list {
+    font-size: 19px;
+  }
+  .filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group label::before {
+    height: 18px;
+    width: 18px;
+  }
+  .filterBox .filterBox-checkBox-group-list .filterBox-checkBox-group label::after {
+    height: 16px;
+    width: 16px;
   }
 }
 @media (min-width: 1100px) {

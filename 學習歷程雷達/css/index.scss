@@ -66,6 +66,7 @@ canvas {
   &.type-3 {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    margin-bottom: 40px;
     & .chart-container {
       width: 100%;
       min-height: 290px;
@@ -74,7 +75,6 @@ canvas {
   }
 
   &.type-2 {
-    margin-bottom: 40px;
     & .sub-title {
       font-size: 15px;
       font-weight: normal;
@@ -185,7 +185,7 @@ canvas {
       grid-gap: 30px;
       margin-bottom: 70px;
       & .chart-container {
-        min-height: 500px;
+        min-height: 400px;
         grid-column: 1/4;
         margin-bottom: -80px;
       }
@@ -202,8 +202,14 @@ canvas {
         text-align: center;
       }
       & .chart-container {
-        min-height: 290px;
+        min-height: 400px;
         grid-column: 1/4;
+      }
+    }
+
+    &.type-3 {
+      & .chart-container {
+        min-height: 400px;
       }
     }
 

@@ -45,7 +45,9 @@ $(document).ready(function () {
 
   // 開始下載
   $(document).on("click", "#start_download", function () {
+    $.LoadingOverlay("show");
     initProperty();
+    $.LoadingOverlay("hide");
   });
 });
 
@@ -90,6 +92,8 @@ async function initProperty() {
   );
   if ("success" === getScienceLiteracyExport["status"]) {
     downloadScienceLiteracyExcel(getScienceLiteracyExport["data"]);
+  } else {
+    alert("取得資料失敗！！\n請確認是否有勾選選項");
   }
 }
 
