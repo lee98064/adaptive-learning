@@ -219,7 +219,7 @@ canvas {
   .scienceLiteracyStatistics-data.type-1 .chart-container {
     min-height: 400px;
     grid-column: 1/4;
-    margin-bottom: -80px;
+    margin-bottom: -30px;
   }
   .scienceLiteracyStatistics-data.type-2 {
     grid-template-columns: repeat(3, 1fr);
@@ -238,6 +238,7 @@ canvas {
   }
   .scienceLiteracyStatistics-data.type-3 .chart-container {
     min-height: 400px;
+    margin-bottom: 30px;
   }
   .scienceLiteracyStatistics-data .card {
     font-size: 19px;
@@ -275,6 +276,7 @@ canvas {
   .scienceLiteracyStatistics-data.type-1 .chart-container {
     min-height: 500px;
     grid-column: 1/6;
+    margin-bottom: -50px;
   }
   .scienceLiteracyStatistics-data.type-1 .card:nth-child(2) {
     grid-column: 2/3;

@@ -380,7 +380,7 @@ const chart_options_768up = {
       ticks: {
         suggestedMin: 0,
         suggestedMax: 10,
-        fontSize: 14,
+        fontSize: 15,
         max: 100,
         min: 0,
         stepSize: 10,
