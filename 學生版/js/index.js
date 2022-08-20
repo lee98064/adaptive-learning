@@ -2,6 +2,7 @@ var sTokenDataValue =
   "YzE2YTUzMjBmYTQ3NTUzMGQ5NTgzYzM0ZmQzNTZlZjVFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRRNklqRTVNREEwTVMxek1Ea3dNekF4SWp0ek9qZzZJbUpsYUdGMmFXOXlJanR6T2pFMU9pSmphR2x1WlhObFgzSmxZV1JwYm1jaU8zTTZPRG9pWTJ4cFpXNTBhV1FpTzNNNk16STZJalp1Y0hOYVVUUkxZbWh1VkRaUlZsZGhZa1JuVVdGaU9FdEdRMFE1WVdjMklqdHpPakV5T2lKamJHbGxiblJ6WldOeVpYUWlPM002TmpRNklsaHRiV05FUWxKNWNFVjNRbkJZY1UxTlpGbElXVGc0TW1obFoxaExhM05vVUhoU1YyNTJOMW95UkdOYVZVMVNPRGhJT1hWNVZsZHRjbGwzVm5VeWVIUWlPMzA9RWRVQWRMRjdCMUVDRjM5NzkxNDkzRUZGOTUzMEY0NDA5NjRGNTY==F7B1ECF39791493EFF9530F440964F56==";
 var proxy = "https://proxy.leetools.eu.org";
 
+var topic = {};
 var chart_data = {};
 
 $(document).ready(async function () {
@@ -20,6 +21,7 @@ $(document).ready(async function () {
   // 當按下搜尋按鈕
   $(document).on("click", ".search-btn", async function () {
     $.LoadingOverlay("show");
+    topic = {}
     let getScienceLiteracyData = await getData("getData_ScienceLiteracy", {
       coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
       explorelearning: $("#explorelearning-selector > .valueShow").data(
@@ -27,12 +29,35 @@ $(document).ready(async function () {
       ),
       searchtext: $("#searchtext").val(),
     });
+
+    if (!getScienceLiteracyData["status"] === "OK") { 
+      alert("發生異常!")
+      return
+    }
+
+    // 將彈出窗口的題目圖片抓出來
+    getScienceLiteracyData["data"].forEach((item) => {
+      const { item_show_num, questions_img, solution_img } = item;
+      topic[item["item_li_sn"]] = {
+        item_show_num,
+        questions_img,
+        solution_img
+      };
+    })
+
     $("#scienceLiteracy-history-row").html(
       tmpl("scienceLiteracy_history_row_template", {
         data: getScienceLiteracyData["data"],
       })
     );
     $.LoadingOverlay("hide");
+  });
+
+  // 當按下查看題目與解答
+  $(document).on("click", "[data-item-li-sn]", function () {
+    let itemSn = $(this).data("item-li-sn");
+
+    alert(topic[itemSn])
   });
 
   // 當按下下載學習紀錄

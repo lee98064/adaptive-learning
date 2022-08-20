@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body>
+    <!-- 核心HTML -->
     <div class="container">
       <section id="pageTab">
         <div class="pageTab">
@@ -85,6 +86,7 @@
         </div>
       </section>
     </div>
+
     <div class="ModalBoxBig"></div>
     <script src="./js/customStyle_function.js"></script>
     <script src="./js/jquery-3.5.1.min.ob.js"></script>
@@ -145,7 +147,7 @@
             <div class="row-data-number-btn-group">
               <% for (var j = 1; j <= data[i].examlist[0].anslist.length; j++ )
               { %>
-              <button class="btn defaultBtn d-block"><%= j %></button>
+              <button class="btn defaultBtn d-block" data-item-li-sn="<%= data[j].item_li_sn %>"><%= j %></button>
               <% } %>
             </div>
           </div>
@@ -202,7 +204,8 @@
       <% } %>
     </script>
 
-    <!-- 彈出視窗模板 -->
+
+    <!-- 下載彈出視窗模板 -->
     <script
       type="text/html"
       id="scienceLiteracy_history_download_modal_template"
