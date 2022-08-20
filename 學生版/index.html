@@ -145,9 +145,14 @@
           <div class="row-data-number md-d-none">
             <h4 class="row-data-title row-data-number-title">題目(解答)</h4>
             <div class="row-data-number-btn-group">
-              <% for (var j = 1; j <= data[i].examlist[0].anslist.length; j++ )
-              { %>
-              <button class="btn defaultBtn d-block" data-item-li-sn="<%= data[j].item_li_sn %>"><%= j %></button>
+              <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++ ) {
+              %>
+              <button
+                class="btn defaultBtn d-block"
+                data-item-li-sn="<%= data[i]['item_li_sn'] %>"
+              >
+                <%= j + 1 %>
+              </button>
               <% } %>
             </div>
           </div>
@@ -165,8 +170,11 @@
               class="row-data-table-data<% if( k != 0 ){ %> history-data<% } %>"
             >
               <% if( k == 0 ){ %>
-              <button class="btn defaultBtn d-block sm-d-none">
-                <%= j+1 %>
+              <button
+                class="btn defaultBtn d-block sm-d-none"
+                data-item-li-sn="<%= data[i].item_li_sn %>"
+              >
+                <%= j + 1 %>
               </button>
               <h4 class="md-d-none">問題<%= j + 1 %></h4>
               <% }else{ %>
@@ -204,94 +212,115 @@
       <% } %>
     </script>
 
-
     <!-- 下載彈出視窗模板 -->
     <script
       type="text/html"
       id="scienceLiteracy_history_download_modal_template"
     >
-      <div class="filterBox-group">
-        <h4>選擇已作答題目</h4>
-        <div class="filterBox">
-          <div class="filterBox-input-group">
-            <input
-              type="text"
-              id="filterBox-input"
-              placeholder="輸入試題編號或名稱"
-            />
-            <button id="filterBox-button">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
-          <div class="filterBox-checkBox-selectAll">
-            <input type="checkbox" value="selectAll" />
-            <label for="selectAll1">全選</label>
-          </div>
-          <div
-            class="filterBox-checkBox-group-list"
-            id="history_download_item_filter"
-          >
-            <% if(data.scienceLiteracyData.length < 0){ %>
-            <h4 style="margin: 10px 20px">
-              <font color="#E00"> 尚未有作答紀錄!! </font>
-            </h4>
-            <% } %> <% for(var i = 0; i < data.scienceLiteracyData.length; i++)
-            { %>
-            <div class="filterBox-checkBox-group">
+      <div class="scienceLiteracy_history_download_modal">
+        <div class="filterBox-group">
+          <h4>選擇已作答題目</h4>
+          <div class="filterBox">
+            <div class="filterBox-input-group">
               <input
-                type="checkbox"
-                value="<%= data.scienceLiteracyData[i].item_li_sn %>"
+                type="text"
+                id="filterBox-input"
+                placeholder="輸入試題編號或名稱"
               />
-              <label
-                ><%= data.scienceLiteracyData[i].item_show_num %>. <%=
-                data.scienceLiteracyData[i].item_name %></label
-              >
+              <button id="filterBox-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
             </div>
-            <% } %>
+            <div class="filterBox-checkBox-selectAll">
+              <input type="checkbox" value="selectAll" />
+              <label for="selectAll1">全選</label>
+            </div>
+            <div
+              class="filterBox-checkBox-group-list"
+              id="history_download_item_filter"
+            >
+              <% if(data.scienceLiteracyData.length < 0){ %>
+              <h4 style="margin: 10px 20px">
+                <font color="#E00"> 尚未有作答紀錄!! </font>
+              </h4>
+              <% } %> <% for(var i = 0; i < data.scienceLiteracyData.length;
+              i++) { %>
+              <div class="filterBox-checkBox-group">
+                <input
+                  type="checkbox"
+                  value="<%= data.scienceLiteracyData[i].item_li_sn %>"
+                />
+                <label
+                  ><%= data.scienceLiteracyData[i].item_show_num %>. <%=
+                  data.scienceLiteracyData[i].item_name %></label
+                >
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="filterBox-group">
+          <h4>選擇輸出項目</h4>
+          <div class="filterBox">
+            <div class="filterBox-checkBox-selectAll">
+              <input type="checkbox" value="selectAll" />
+              <label>全選</label>
+            </div>
+            <div
+              class="filterBox-checkBox-group-list"
+              id="history_download_column_filter"
+            >
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_show_num" />
+                <label>題目編號</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_name" />
+                <label>題目名稱</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="answer" />
+                <label>你的答案</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="iscorrect" />
+                <label>對與錯</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="answer_time" />
+                <label>作答時間(秒)</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="update_time" />
+                <label>測驗時間(年/月/日 時刻)</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_history" />
+                <label>過往作答歷史</label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="filterBox-group">
-        <h4>選擇輸出項目</h4>
-        <div class="filterBox">
-          <div class="filterBox-checkBox-selectAll">
-            <input type="checkbox" value="selectAll" />
-            <label>全選</label>
-          </div>
-          <div
-            class="filterBox-checkBox-group-list"
-            id="history_download_column_filter"
-          >
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="item_show_num" />
-              <label>題目編號</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="item_name" />
-              <label>題目名稱</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="answer" />
-              <label>你的答案</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="iscorrect" />
-              <label>對與錯</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="answer_time" />
-              <label>作答時間(秒)</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="update_time" />
-              <label>測驗時間(年/月/日 時刻)</label>
-            </div>
-            <div class="filterBox-checkBox-group">
-              <input type="checkbox" value="item_history" />
-              <label>過往作答歷史</label>
-            </div>
-          </div>
-        </div>
+    </script>
+
+    <script type="text/html" id="scienceLiteracy_history_topic_modal_template">
+      <div class="scienceLiteracy_history_topic_modal">
+        <% for(var index in data['questions_img']) { %>
+        <img
+          src="https://proxy.leetools.eu.org/<%= data['questions_img'][index] %>"
+          class="question_img"
+          alt=""
+          srcset=""
+        />
+        <img
+          src="https://proxy.leetools.eu.org/<%= data['solution_img'][index] %>"
+          class="solution_img"
+          alt=""
+          srcset=""
+        />
+        <hr />
+        <% } %>
       </div>
     </script>
 

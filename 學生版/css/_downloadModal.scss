@@ -2,7 +2,7 @@
   --border-color: #e5e5e5;
 }
 
-.ModalBoxDetailText {
+.scienceLiteracy_history_download_modal {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
@@ -175,7 +175,7 @@
 }
 
 @media (min-width: 1100px) {
-  .ModalBoxDetailText {
+  .scienceLiteracy_history_download_modal {
     min-width: 75vw;
     max-width: 78vw;
     max-height: 75vh;

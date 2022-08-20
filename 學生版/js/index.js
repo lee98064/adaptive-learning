@@ -21,7 +21,7 @@ $(document).ready(async function () {
   // 當按下搜尋按鈕
   $(document).on("click", ".search-btn", async function () {
     $.LoadingOverlay("show");
-    topic = {}
+    topic = {};
     let getScienceLiteracyData = await getData("getData_ScienceLiteracy", {
       coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
       explorelearning: $("#explorelearning-selector > .valueShow").data(
@@ -30,9 +30,9 @@ $(document).ready(async function () {
       searchtext: $("#searchtext").val(),
     });
 
-    if (!getScienceLiteracyData["status"] === "OK") { 
-      alert("發生異常!")
-      return
+    if (!getScienceLiteracyData["status"] === "OK") {
+      alert("發生異常!");
+      return;
     }
 
     // 將彈出窗口的題目圖片抓出來
@@ -41,9 +41,9 @@ $(document).ready(async function () {
       topic[item["item_li_sn"]] = {
         item_show_num,
         questions_img,
-        solution_img
+        solution_img,
       };
-    })
+    });
 
     $("#scienceLiteracy-history-row").html(
       tmpl("scienceLiteracy_history_row_template", {
@@ -56,8 +56,15 @@ $(document).ready(async function () {
   // 當按下查看題目與解答
   $(document).on("click", "[data-item-li-sn]", function () {
     let itemSn = $(this).data("item-li-sn");
-
-    alert(topic[itemSn])
+    const buttonBig = [];
+    modalBoxBig(
+      "教育部因材網",
+      tmpl("scienceLiteracy_history_topic_modal_template", {
+        data: topic[itemSn],
+      }),
+      buttonBig,
+      true
+    );
   });
 
   // 當按下下載學習紀錄

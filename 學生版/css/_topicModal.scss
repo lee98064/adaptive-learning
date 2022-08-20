@@ -1,0 +1,31 @@
+.scienceLiteracy_history_topic_modal {
+  & img {
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -o-crisp-edges; /* Opera */
+    image-rendering: -webkit-optimize-contrast; /*Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+  }
+
+  & .question_img {
+    width: 100%;
+  }
+
+  //   & .solution_img {
+  //     width: 60%;
+  //   }
+}
+
+@media (min-width: 1100px) {
+  .scienceLiteracy_history_topic_modal {
+    width: 40vw;
+
+    & .question_img {
+      width: unset;
+    }
+
+    // & .solution_img {
+    //   width: unset;
+    // }
+  }
+}

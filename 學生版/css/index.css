@@ -3,7 +3,7 @@
   --border-color: #e5e5e5;
 }
 
-.ModalBoxDetailText {
+.scienceLiteracy_history_download_modal {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
@@ -155,7 +155,7 @@
   }
 }
 @media (min-width: 1100px) {
-  .ModalBoxDetailText {
+  .scienceLiteracy_history_download_modal {
     min-width: 75vw;
     max-width: 78vw;
     max-height: 75vh;
@@ -163,6 +163,25 @@
   }
   .filterBox-group {
     width: 100%;
+  }
+}
+.scienceLiteracy_history_topic_modal img {
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /*Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+}
+.scienceLiteracy_history_topic_modal .question_img {
+  width: 100%;
+}
+
+@media (min-width: 1100px) {
+  .scienceLiteracy_history_topic_modal {
+    width: 40vw;
+  }
+  .scienceLiteracy_history_topic_modal .question_img {
+    width: unset;
   }
 }
 .scienceLiteracy-history-row.active .scienceLiteracy-history-row-title {
