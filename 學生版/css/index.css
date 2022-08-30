@@ -197,7 +197,7 @@
   width: 100%;
 }
 .scienceLiteracy_history_topic_modal .solution_img {
-  width: 80%;
+  max-width: 100%;
 }
 
 @media (min-width: 1100px) {
@@ -483,9 +483,6 @@ canvas {
   border: none;
 }
 
-#scienceLiteracyStatistics_container {
-  max-width: 1306px;
-}
 #scienceLiteracyStatistics_container .hr {
   height: 1px;
   width: 100%;
