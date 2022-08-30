@@ -93,7 +93,18 @@ async function initProperty() {
   if ("success" === getScienceLiteracyExport["status"]) {
     downloadScienceLiteracyExcel(getScienceLiteracyExport["data"]);
   } else {
-    alert("取得資料失敗！！\n請確認是否有勾選選項");
+    const ModalBoxButton = [
+      {
+        buttonText: "OK",
+        buttonId: "",
+        buttonClass: "btn07 closeModalBoxBig",
+      },
+    ];
+    modalBoxBig(
+      "錯誤",
+      "取得資料失敗！！<br>請確認是否有勾選選項!",
+      ModalBoxButton
+    );
   }
 }
 
