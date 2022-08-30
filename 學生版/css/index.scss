@@ -152,6 +152,10 @@ html {
   margin: auto;
 }
 
+.ModalBoxBig .ModalBoxDetailTitle {
+  border-bottom: 0px;
+}
+
 // 電腦平板共用
 @media (min-width: 768px) {
   .pageTab .pageTabList {

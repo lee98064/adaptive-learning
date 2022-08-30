@@ -37,8 +37,9 @@ $(document).ready(async function () {
 
     // 將彈出窗口的題目圖片抓出來
     getScienceLiteracyData["data"].forEach((item) => {
-      const { item_show_num, questions_img, solution_img } = item;
+      const { item_name, item_show_num, questions_img, solution_img } = item;
       topic[item["item_li_sn"]] = {
+        item_name,
         item_show_num,
         questions_img,
         solution_img,
@@ -56,11 +57,16 @@ $(document).ready(async function () {
   // 當按下查看題目與解答
   $(document).on("click", "[data-item-li-sn]", function () {
     let itemSn = $(this).data("item-li-sn");
+    let itmeIndex = $(this).data("item-li-index");
     const buttonBig = [];
     modalBoxBig(
-      "教育部因材網",
+      tmpl("scienceLiteracy_history_topic_modal_title_template", {
+        topicName: topic[itemSn]["item_name"],
+        topicNum: itmeIndex + 1,
+      }),
       tmpl("scienceLiteracy_history_topic_modal_template", {
         data: topic[itemSn],
+        itemIndex: itmeIndex,
       }),
       buttonBig,
       true

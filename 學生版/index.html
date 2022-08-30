@@ -150,6 +150,7 @@
               <button
                 class="btn defaultBtn d-block"
                 data-item-li-sn="<%= data[i]['item_li_sn'] %>"
+                data-item-li-index="<%= j %>"
               >
                 <%= j + 1 %>
               </button>
@@ -173,6 +174,7 @@
               <button
                 class="btn defaultBtn d-block sm-d-none"
                 data-item-li-sn="<%= data[i].item_li_sn %>"
+                data-item-li-index="<%= j %>"
               >
                 <%= j + 1 %>
               </button>
@@ -304,23 +306,35 @@
       </div>
     </script>
 
+    <script
+      type="text/html"
+      id="scienceLiteracy_history_topic_modal_title_template"
+    >
+      <p class="topic_modal_title">
+        <%= topicName %>：<span class="topic_modal_sub_title"
+          >第<%= topicNum %>題</span
+        >
+      </p>
+    </script>
+
     <script type="text/html" id="scienceLiteracy_history_topic_modal_template">
       <div class="scienceLiteracy_history_topic_modal">
-        <% for(var index in data['questions_img']) { %>
-        <img
-          src="https://proxy.leetools.eu.org/<%= data['questions_img'][index] %>"
-          class="question_img"
-          alt=""
-          srcset=""
-        />
-        <img
-          src="https://proxy.leetools.eu.org/<%= data['solution_img'][index] %>"
-          class="solution_img"
-          alt=""
-          srcset=""
-        />
-        <hr />
-        <% } %>
+        <div class="question">
+          <span>題目</span><br />
+          <img
+            src="https://proxy.leetools.eu.org/<%= data['questions_img'][itemIndex] %>"
+            class="question_img"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="answer">
+          <span>解答</span><br />
+          <img
+            src="https://proxy.leetools.eu.org/<%= data['solution_img'][itemIndex] %>"
+            class="solution_img"
+          />
+        </div>
       </div>
     </script>
 
