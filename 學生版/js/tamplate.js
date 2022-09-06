@@ -90,29 +90,31 @@ function formatTime2HMSMs(time) {
   let hour = 0;
   let result = "";
   const totalSecond = parseInt(time / 1000); // 3671
-  if (totalSecond > 59) {
-    second = parseInt(totalSecond % 60); // 11
-    totalMinute = parseInt(totalSecond / 60); // 61
-  } else {
-    second = totalSecond;
-  }
-  if (totalMinute > 59) {
-    minute = parseInt(totalMinute % 60); // 1
-    hour = parseInt(totalMinute / 60); // 1
-  } else {
-    minute = totalMinute;
-  }
 
-  if (minute < 10) {
-    result += "0" + minute;
-  } else {
-    result += "分" + minute;
-  }
-  if (second < 10) {
-    result += "分0" + second + "秒";
-  } else {
-    result += "分" + second + "秒";
-  }
+  result = totalSecond + "秒";
+  // if (totalSecond > 59) {
+  //   second = parseInt(totalSecond % 60); // 11
+  //   totalMinute = parseInt(totalSecond / 60); // 61
+  // } else {
+  //   second = totalSecond;
+  // }
+  // if (totalMinute > 59) {
+  //   minute = parseInt(totalMinute % 60); // 1
+  //   hour = parseInt(totalMinute / 60); // 1
+  // } else {
+  //   minute = totalMinute;
+  // }
+
+  // if (minute < 10) {
+  //   result += "0" + minute;
+  // } else {
+  //   result += "分" + minute;
+  // }
+  // if (second < 10) {
+  //   result += "分0" + second + "秒";
+  // } else {
+  //   result += "分" + second + "秒";
+  // }
 
   return result;
 }
