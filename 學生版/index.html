@@ -176,7 +176,7 @@
             <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++){ %>
             <% for (var k = 0; k < data[i].examlist.length; k++) { %>
             <div
-              class="row-data-table-data<% if( k != 0 ){ %> history-data<% } %>"
+              class="row-data-table-data<% if( k != 0 ){ %> history-data<% } %><% if( k % 2 != 0 ){ %> history-data<% } %>"
             >
               <% if( k == 0 ){ %>
               <button
