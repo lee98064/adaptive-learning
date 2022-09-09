@@ -109,6 +109,21 @@ $(document).ready(async function () {
     $.LoadingOverlay("hide");
   });
 
+  // 查看已作答未作答題目
+  $(document).on("click", "[data-is-answer]", function () {
+    let isAnswer = $(this).data("is-answer");
+    let category = $(this).data("category");
+
+    modalBoxBig(
+      "教育部因才網",
+      tmpl("scienceLiteracy_topic_status_modal_template", {
+        data: {},
+      }),
+      [],
+      true
+    );
+  });
+
   // 初始化核心素養選項
   let getCoreLiteracyOption = await getData("getOption_CoreLiteracy");
   if ("success" === getCoreLiteracyOption["status"]) {

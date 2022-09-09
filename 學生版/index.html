@@ -314,6 +314,7 @@
       </div>
     </script>
 
+    <!-- 題目彈出視窗標題 -->
     <script
       type="text/html"
       id="scienceLiteracy_history_topic_modal_title_template"
@@ -325,6 +326,7 @@
       </p>
     </script>
 
+    <!-- 題目彈出視窗內容 -->
     <script type="text/html" id="scienceLiteracy_history_topic_modal_template">
       <div class="scienceLiteracy_history_topic_modal">
         <div class="question">
@@ -381,14 +383,20 @@
               <h3 class="card-title">A 自主行動</h3>
               <div class="card-info">
                 <span>
-                  已做答題數：<span class="green-text"
+                  已做答題數：<span
+                    class="green-text"
+                    data-is-answer="true"
+                    data-category="A"
                     ><%= data.scienceLiteracyData["A"].answered %>題<i
                       class="fa-solid fa-hand-point-left"
                     ></i>
                   </span>
                 </span>
                 <span>
-                  未作答題數：<span class="green-text"
+                  未作答題數：<span
+                    class="green-text"
+                    data-is-answer="false"
+                    data-category="A"
                     ><%= data.scienceLiteracyData["A"].notanswer %>題<i
                       class="fa-solid fa-hand-point-left"
                     ></i
@@ -516,14 +524,20 @@
               <h3 class="card-title">A1 身心素質與自我精進</h3>
               <div class="card-info">
                 <span>
-                  已做答題數：<span class="green-text"
+                  已做答題數：<span
+                    class="green-text"
+                    data-is-answer="true"
+                    data-category="A1"
                     ><%= data.scienceLiteracyData["A1"].answered %>題<i
                       class="fa-solid fa-hand-point-left"
                     ></i>
                   </span>
                 </span>
                 <span>
-                  未作答題數：<span class="green-text"
+                  未作答題數：<span
+                    class="green-text"
+                    data-is-answer="false"
+                    data-category="A1"
                     ><%= data.scienceLiteracyData["A1"].notanswer %>題<i
                       class="fa-solid fa-hand-point-left"
                     ></i
@@ -1140,6 +1154,1217 @@
         </div>
       </div>
     </script>
+
+    <!-- 已作答未作答彈出視窗 -->
+    <script type="text/html" id="scienceLiteracy_topic_status_modal_template">
+      <hr class="mb-3" />
+      <div class="scienceLiteracy_topic_status_modal">
+        <div class="literacy mb-3">
+          <ul>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/natural_science_question_01.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQyLXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                001. 水成分對結冰溫度的影響
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>001. 水成分對結冰溫度的影響</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0101.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTY0LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                002. 指紋顯現
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>002. 指紋顯現</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0201.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTY1LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                003. 維他命C滴定
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>003. 維他命C滴定</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0301.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTY2LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                004. Q彈麵條
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>004. Q彈麵條</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0401.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTY3LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                005. 芹菜
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>005. 芹菜</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0501.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTY4LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                006. 肌蛋白
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>006. 肌蛋白</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0601.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTY5LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                007. 綠豆生長的影響
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>007. 綠豆生長的影響</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0801.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTU0LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                008. 阿虎的玩具
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>008. 阿虎的玩具</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N0901.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTcwLXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                009. 翻轉吧!吐司
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>009. 翻轉吧!吐司</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1101.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTcxLXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                010. 光合作用
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>010. 光合作用</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1201.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTcyLXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                011. 颱風
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>011. 颱風</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1301.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTczLXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                012. 鐵達尼號(尼克不要死～)
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>012. 鐵達尼號(尼克不要死～)</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1401.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTc0LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                013. 玻璃瓶啤酒挑戰
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>013. 玻璃瓶啤酒挑戰</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1501.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTc1LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                014. 全範圍或限制範圍關節重量訓練與負重量關係
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>014. 全範圍或限制範圍關節重量訓練與負重量關係</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1601.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTU1LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                015. 蟑螂行為研究
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>015. 蟑螂行為研究</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1701.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTU2LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                016. 防曬乳
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>016. 防曬乳</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N1801.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTc2LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                017. 日落
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>017. 日落</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N2001.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTc3LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                018. 週期表拼圖
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>018. 週期表拼圖</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N2101.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTc4LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                019. 過氧化氫酶作用大不同
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>019. 過氧化氫酶作用大不同</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N2201.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTc5LXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                020. 為何在葉背
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>020. 為何在葉背</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N2301.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTgwLXNob3dJdGVtLUIxNTgwNzkzQUE0QkMzQTBGMUM5RTE1OUQzQjk0NzQw=B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                021. 酵母菌的醣類代謝
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>021. 酵母菌的醣類代謝</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N23.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTE5NC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                022. 亞硝酸鹽檢測
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>022. 亞硝酸鹽檢測</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N24.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTE5NS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                023. 食用水球
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>023. 食用水球</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N25.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTE5Ni1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                024. 太陽的味道
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>024. 太陽的味道</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N26.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTE5Ny1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                025. 土壤液化
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>025. 土壤液化</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N27.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTE5OC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                026. 米蟲
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>026. 米蟲</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N28.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTE5OS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                027. 湖底沈積物
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>027. 湖底沈積物</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N29.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwMC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                028. 豆芽菜的真相
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>028. 豆芽菜的真相</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N30.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwMS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                029. 橡皮筋的虎克之戀
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>029. 橡皮筋的虎克之戀</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N31.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwMi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                030. 膠囊彈跳
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>030. 膠囊彈跳</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N32.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwMy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                031. 果皮吸附重金屬
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>031. 果皮吸附重金屬</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N33.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwNC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                032. 神奇的泡泡
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>032. 神奇的泡泡</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N34.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwNS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                033. 阿克曼轉向
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>033. 阿克曼轉向</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N35.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwNi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                034. 孔雀魚
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>034. 孔雀魚</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N36.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwNy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                035. 手沖咖啡
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>035. 手沖咖啡</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N37.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwOC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                036. 咖啡
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>036. 咖啡</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N38.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIwOS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                037. 成雲致雨
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>037. 成雲致雨</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N39.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxMC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                038. 達爾文向光性
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>038. 達爾文向光性</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N40.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxMS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                039. 手指點擊次數
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>039. 手指點擊次數</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N41.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxMi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                040. BMI 與最佳體重
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>040. BMI 與最佳體重</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N44.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxNS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                041. 視覺錯覺
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>041. 視覺錯覺</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N45.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxNi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                042. 人體計時器
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>042. 人體計時器</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N46.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxNy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                043. 顯微測量
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>043. 顯微測量</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N47.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxOC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                044. BMI與健康習慣
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>044. BMI與健康習慣</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N48.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIxOS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                045. 螞蟻愛吃糖
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>045. 螞蟻愛吃糖</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N49.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyMC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                046. 泡泡
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>046. 泡泡</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N50.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyMS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                047. 週日運動
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>047. 週日運動</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N51.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyMi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                048. 蝶豆花漸層之美
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>048. 蝶豆花漸層之美</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N52.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyMy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                049. 蒸餾與料理科學
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>049. 蒸餾與料理科學</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N53.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyNC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                050. 茶葉萃取液
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>050. 茶葉萃取液</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N54.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyNS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                051. 提煉精油
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>051. 提煉精油</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N55.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyNi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                052. 水蚤心跳觀察
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>052. 水蚤心跳觀察</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N56.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyNy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                053. 光週期
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>053. 光週期</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N57.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyOC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                054. 花青素
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>054. 花青素</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N58.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIyOS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                055. 電磁波
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>055. 電磁波</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N59.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIzMC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                056. 光影遊戲
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>056. 光影遊戲</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N60.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIzMS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                057. 電磁感應
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>057. 電磁感應</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N61.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIzMi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                058. 光反應實驗
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>058. 光反應實驗</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N62.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIzMy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                059. 豆子中的抗氧化酵素
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>059. 豆子中的抗氧化酵素</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N63.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIzNC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                060. 過氧化氫酶催化實驗
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>060. 過氧化氫酶催化實驗</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N64.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTIzNS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                061. 大象牙膏的探究
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>061. 大象牙膏的探究</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N65.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzMi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                062. 疫苗
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>062. 疫苗</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N66.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzMy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                063. 燭火燒不盡，春風吹又生
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>063. 燭火燒不盡，春風吹又生</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N67.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzNC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                064. 指紋反應探究
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>064. 指紋反應探究</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N68.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzNS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                065. 空氣汙染
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>065. 空氣汙染</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N69.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzNi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                066. 面鏡成像
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>066. 面鏡成像</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N70.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzNy1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                067. 南北半球水槽漩渦
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>067. 南北半球水槽漩渦</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N71.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzOC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                068. 怪怪飛行器
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>068. 怪怪飛行器</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N72.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQzOS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                069. 溫度受器
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>069. 溫度受器</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N73.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0MC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                070. 喝碗味增湯好難
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>070. 喝碗味增湯好難</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N74.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0MS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                071. 吸管排笛
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>071. 吸管排笛</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N75.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0Mi1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                072. 光變油墨
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>072. 光變油墨</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N76.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0My1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                073. 不對稱的美麗
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>073. 不對稱的美麗</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N77.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0NC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                074. Covid-19傳染病數據
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>074. Covid-19傳染病數據</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N78.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0NS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                075. 心臟病成因與七國研究
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>075. 心臟病成因與七國研究</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N79.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0Ni1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                076. 橡皮筋
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>076. 橡皮筋</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N80.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0Ny1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                077. 花青素
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>077. 花青素</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N81.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0OC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                078. 米
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>078. 米</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N82.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ0OS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                079. 孔雀秋海棠
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>079. 孔雀秋海棠</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N83.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ1MC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                080. 水能載「葉」，亦能覆「葉」
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>080. 水能載「葉」，亦能覆「葉」</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N84.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ2My1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                081. 「化」「腐」朽為神奇－膠體溶液的特性
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>081. 「化」「腐」朽為神奇－膠體溶液的特性</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N85.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ2NC1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                082. 全球氣候變遷之融冰現象
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>082. 全球氣候變遷之融冰現象</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N86.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ2NS1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                083. 碳捕獲
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>083. 碳捕獲</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N87.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ2Ni1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                084. 水資源處理流程
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>084. 水資源處理流程</span>
+            </li>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw/literacy_interactive/science_reading/N88.php?data=NjQyZTkyZWZiNzk0MjE3MzQ4ODFiNTNlMWUxYjE4YjYtMTkwMDQ2LXVzZXIyODc3Mzc0LTQ2Ny1zaG93SXRlbS1CMTU4MDc5M0FBNEJDM0EwRjFDOUUxNTlEM0I5NDc0MA===B1580793AA4BC3A0F1C9E159D3B94740=&amp;mission_sn=0"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                085. 天然植物色素
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span>085. 天然植物色素</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </script>
+
+    <div class="CustomModalBox hide">
+      <div class="CustomModalBox-container">
+        <div class="CustomModalBox-body">
+          <div class="CustomModalBox-title">教育部因材網</div>
+          <div class="CustomModalBox-content"></div>
+          <div class="CustomModalBox-footer"></div>
+        </div>
+      </div>
+    </div>
 
     <script src="./js/api.js"></script>
     <script src="./js/index.js"></script>
