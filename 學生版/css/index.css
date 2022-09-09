@@ -34,7 +34,7 @@
 .CustomModalBox .CustomModalBox-container .CustomModalBox-body .CustomModalBox-title {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem;
   border-bottom: 1px solid #e9ecef;
   border-top-left-radius: 0.3rem;
@@ -48,7 +48,7 @@
 .CustomModalBox .CustomModalBox-container .CustomModalBox-body .CustomModalBox-footer {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 1rem;
   border-top: 1px solid #e9ecef;
 }
