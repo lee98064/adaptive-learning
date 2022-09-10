@@ -1,8 +1,12 @@
 $(document).ready(function () {
-  $(document).on("click", ".CustomModalBox-close", function () {
-    let modalBox = $(".CustomModalBox");
-    modalBox.hide();
-  });
+  $(document).on(
+    "click",
+    ".CustomModalBox-close,.CustomModalBox-x",
+    function () {
+      let modalBox = $(".CustomModalBox");
+      modalBox.hide();
+    }
+  );
 });
 
 function customModalBox(title = null, content, footer = null) {
@@ -16,6 +20,9 @@ function customModalBox(title = null, content, footer = null) {
 
   if (footer != null) {
     $(".CustomModalBox-footer", modalBox).html(footer);
+    $(".CustomModalBox-footer", modalBox).show();
+  } else {
+    $(".CustomModalBox-footer", modalBox).hide();
   }
   modalBox.show();
 }

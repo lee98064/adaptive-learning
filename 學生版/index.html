@@ -1157,8 +1157,11 @@
 
     <!-- 已作答未作答彈出視窗 -->
     <script type="text/html" id="scienceLiteracy_topic_status_modal_template">
-      <hr class="mb-3" />
+      <!-- <hr class="mb-3" /> -->
       <div class="scienceLiteracy_topic_status_modal">
+        <h4 class="topic_status_title mb-3">
+          <font color="#0BA44A">A自主行動</font> 已作答題目
+        </h4>
         <div class="literacy mb-3">
           <ul>
             <li class="spanNote">
@@ -2359,6 +2362,7 @@
     <div class="CustomModalBox hide">
       <div class="CustomModalBox-container">
         <div class="CustomModalBox-body">
+          <i class="fas fa-times CustomModalBox-x" aria-hidden="true"></i>
           <div class="CustomModalBox-title">教育部因材網</div>
           <div class="CustomModalBox-content"></div>
           <div class="CustomModalBox-footer"></div>
@@ -2366,9 +2370,9 @@
       </div>
     </div>
 
+    <script src="./js/customModalBox.js"></script>
     <script src="./js/api.js"></script>
     <script src="./js/index.js"></script>
-    <script src="/js/customModalBox.js"></script>
     <script src="./js/downloadModal.js"></script>
   </body>
 </html>

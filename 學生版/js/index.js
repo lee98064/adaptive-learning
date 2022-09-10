@@ -114,13 +114,11 @@ $(document).ready(async function () {
     let isAnswer = $(this).data("is-answer");
     let category = $(this).data("category");
 
-    modalBoxBig(
+    customModalBox(
       "教育部因才網",
       tmpl("scienceLiteracy_topic_status_modal_template", {
         data: {},
-      }),
-      [],
-      true
+      })
     );
   });
 

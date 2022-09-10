@@ -19,6 +19,12 @@
   margin: 0.5rem;
   pointer-events: none;
 }
+.CustomModalBox .CustomModalBox-container .CustomModalBox-x {
+  position: absolute;
+  right: 30px;
+  top: 25px;
+  cursor: pointer;
+}
 .CustomModalBox .CustomModalBox-container .CustomModalBox-body {
   position: relative;
   display: flex;
@@ -44,6 +50,8 @@
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
+  max-height: 70vh;
+  overflow-x: auto;
 }
 .CustomModalBox .CustomModalBox-container .CustomModalBox-body .CustomModalBox-footer {
   display: flex;
@@ -57,6 +65,9 @@
   .CustomModalBox .CustomModalBox-container {
     margin: 1.75rem auto;
     max-width: 80vw;
+  }
+  .CustomModalBox .CustomModalBox-container .CustomModalBox-content {
+    margin-bottom: 20px;
   }
 }
 :root {
@@ -276,9 +287,8 @@
     font-size: 20px;
   }
 }
-.scienceLiteracy_topic_status_modal {
-  width: 80vw;
-  max-height: 70vh;
+.scienceLiteracy_topic_status_modal .topic_status_title {
+  text-align: center;
 }
 .scienceLiteracy_topic_status_modal .literacy ul {
   display: grid;
@@ -287,19 +297,17 @@
   grid-row-gap: 10px;
 }
 .scienceLiteracy_topic_status_modal .literacy ul li a {
-  max-width: 80vw;
+  box-sizing: border-box;
   display: block;
   height: 40px;
   line-height: 38px;
   padding-right: 35px;
   padding-left: 14px;
-  background: #1481b6;
+  background-color: #1481b6;
   color: #fff;
   font-size: 17px;
-  position: relative;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
   border-radius: 8px;
 }
 .scienceLiteracy_topic_status_modal .literacy ul li a i {
@@ -319,7 +327,6 @@
 }
 @media (min-width: 768px) and (max-width: 1261px) {
   .scienceLiteracy_topic_status_modal .literacy ul {
-    max-width: 30vw;
     grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -1,8 +1,7 @@
 .scienceLiteracy_topic_status_modal {
-  //   min-width: 80vw;
-  width: 80vw;
-  max-height: 70vh;
-
+  & .topic_status_title {
+    text-align: center;
+  }
   & .literacy {
     & ul {
       display: grid;
@@ -11,19 +10,17 @@
       grid-row-gap: 10px;
 
       & li a {
-        max-width: 80vw;
+        box-sizing: border-box;
         display: block;
         height: 40px;
         line-height: 38px;
         padding-right: 35px;
         padding-left: 14px;
-        background: #1481b6;
+        background-color: #1481b6;
         color: #fff;
         font-size: 17px;
-        position: relative;
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
+        text-overflow: ellipsis;
         border-radius: 8px;
 
         & i {
@@ -56,7 +53,6 @@
   .scienceLiteracy_topic_status_modal {
     & .literacy {
       & ul {
-        max-width: 30vw;
         grid-template-columns: repeat(2, 1fr);
       }
     }
