@@ -241,10 +241,20 @@ html {
   }
 
   .contant-custom {
-    display: block !important;
+    display: block;
   }
 
   .contant-collapse {
     display: none;
+  }
+
+  .radar-filter {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 3fr 160px;
+    grid-gap: 20px;
+
+    & .confirmBtn {
+      grid-column: 5/6;
+    }
   }
 }

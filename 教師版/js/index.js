@@ -1,9 +1,10 @@
 var sTokenDataValue =
-  "YzE2YTUzMjBmYTQ3NTUzMGQ5NTgzYzM0ZmQzNTZlZjVFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRRNklqRTVNREEwTVMxek1Ea3dNekF4SWp0ek9qZzZJbUpsYUdGMmFXOXlJanR6T2pFMU9pSmphR2x1WlhObFgzSmxZV1JwYm1jaU8zTTZPRG9pWTJ4cFpXNTBhV1FpTzNNNk16STZJalp1Y0hOYVVUUkxZbWh1VkRaUlZsZGhZa1JuVVdGaU9FdEdRMFE1WVdjMklqdHpPakV5T2lKamJHbGxiblJ6WldOeVpYUWlPM002TmpRNklsaHRiV05FUWxKNWNFVjNRbkJZY1UxTlpGbElXVGc0TW1obFoxaExhM05vVUhoU1YyNTJOMW95UkdOYVZVMVNPRGhJT1hWNVZsZHRjbGwzVm5VeWVIUWlPMzA9RWRVQWRMRjdCMUVDRjM5NzkxNDkzRUZGOTUzMEY0NDA5NjRGNTY==F7B1ECF39791493EFF9530F440964F56==";
+  "ZDY3ZDhhYjRmNGMxMGJmMjJhYTM1M2UyNzg3OTEzM2NFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRJNklqRTVNREEwTVMxMGREWXhOaUk3Y3pvNE9pSmlaV2hoZG1sdmNpSTdjem94TlRvaVkyaHBibVZ6WlY5eVpXRmthVzVuSWp0ek9qZzZJbU5zYVdWdWRHbGtJanR6T2pNeU9pSTJibkJ6V2xFMFMySm9ibFEyVVZaWFlXSkVaMUZoWWpoTFJrTkVPV0ZuTmlJN2N6b3hNam9pWTJ4cFpXNTBjMlZqY21WMElqdHpPalkwT2lKWWJXMWpSRUpTZVhCRmQwSndXSEZOVFdSWlNGazRPREpvWldkWVMydHphRkI0VWxkdWRqZGFNa1JqV2xWTlVqZzRTRGwxZVZaWGJYSlpkMVoxTW5oMElqdDlFZFVBZEw2MTE0NUQwODg5QzlDQTMyNDRGMTBBNTJFMzI4Rjc4OA";
 var proxy = "https://proxy.leetools.eu.org";
 
 var topic = {};
 var chart_data = {};
+var semester_and_class_data = {};
 
 $(document).ready(async function () {
   $.LoadingOverlay("show");
@@ -131,6 +132,59 @@ $(document).ready(async function () {
     );
   });
 
+  // 初始化學期選項
+  let getSemesterAndClassOption = await getData("getOption_SemesterAndClass");
+  semester_and_class_data = getSemesterAndClassOption;
+  if ("success" === getSemesterAndClassOption["status"]) {
+    Object.entries(
+      getSemesterAndClassOption["data"]["class"]["option_seme_name"]
+    ).forEach((ele) => {
+      const [key, value] = ele;
+      let html = `<li data-value="${key}">${value}</li>`;
+      $("#semester-selector > ul").append(html);
+      $("#radar-semester-selector > ul").append(html);
+    });
+    $("#semester-selector  > .valueShow")
+      .data("value", "sad")
+      .trigger("changeData");
+  }
+
+  // 當選擇學年度時抓取班級（學習紀錄）
+  $(document).on("click", "#semester-selector li", function () {
+    let semester = $(this).data("value");
+    $("#class-selector > ul").html("");
+    semester_and_class_data["data"]["class"]["option_class_name"][semester][
+      "normal_class"
+    ].forEach((ele) => {
+      const { class_sn, class_name } = ele;
+      let html = `<li data-value="${class_sn}">${class_name}</li>`;
+      $("#class-selector > ul").append(html);
+    });
+  });
+
+  // 當選擇班級時抓取學生列表（學習紀錄）
+  $(document).on("click", "#class-selector li", async function () {
+    // 抓取學生清單
+    let getStudentOption = await getData("getOption_Student", {
+      seme: $("#semester-selector > .valueShow").data("value"),
+      classtype: "normal_class",
+      class_sn: $(this).data("value"),
+    });
+    if ("success" === getStudentOption["status"]) {
+      $("#student-selector > ul").html("");
+      getStudentOption["data"].forEach((ele) => {
+        $("#student-selector > ul").append(
+          `<li data-value="${ele.user_id}">${ele["uname"]}</li>`
+        );
+      });
+    }
+  });
+
+  // 當選擇學年度時（雷達圖）
+  $(document).on("click", "#radar-semester-selector li", function () {
+    alert($(this).data("value"));
+  });
+
   // 初始化核心素養選項
   let getCoreLiteracyOption = await getData("getOption_CoreLiteracy");
   if ("success" === getCoreLiteracyOption["status"]) {
@@ -151,26 +205,26 @@ $(document).ready(async function () {
     });
   }
 
-  let getScienceLiteracyData = await getData("getStatistics_ScienceLiteracy");
+  // let getScienceLiteracyData = await getData("getStatistics_ScienceLiteracy");
 
-  chart_data = {
-    ...chart_default_data,
-    ...getScienceLiteracyData["data"],
-  };
+  // chart_data = {
+  //   ...chart_default_data,
+  //   ...getScienceLiteracyData["data"],
+  // };
 
-  $("#scienceLiteracyStatistics_container").html(
-    tmpl("scienceLiteracyStatistics_template", {
-      data: {
-        total_answered: getScienceLiteracyData["total_answered"],
-        total_notanswer: getScienceLiteracyData["total_notanswer"],
-        chtclass: getScienceLiteracyData["chtclass"],
-        name: getScienceLiteracyData["name"],
-        scienceLiteracyData: chart_data,
-      },
-    })
-  );
+  // $("#scienceLiteracyStatistics_container").html(
+  //   tmpl("scienceLiteracyStatistics_template", {
+  //     data: {
+  //       total_answered: getScienceLiteracyData["total_answered"],
+  //       total_notanswer: getScienceLiteracyData["total_notanswer"],
+  //       chtclass: getScienceLiteracyData["chtclass"],
+  //       name: getScienceLiteracyData["name"],
+  //       scienceLiteracyData: chart_data,
+  //     },
+  //   })
+  // );
 
-  drawRadarChart();
+  // drawRadarChart();
 
   $(".more").click(function (e) {
     $(this).siblings(".more-info").slideToggle("slow");
@@ -227,6 +281,12 @@ async function getData(sFuncName, data = {}) {
     oParm["accesstoken"] = oAccessTokenResult["accesstoken"];
 
     switch (sFuncName) {
+      case "getOption_SemesterAndClass":
+        vRtn = await getOption_SemesterAndClass(oParm);
+        break;
+      case "getOption_Student":
+        vRtn = await getOption_Student(oParm, data);
+        break;
       case "getOption_CoreLiteracy":
         vRtn = await getOption_CoreLiteracy(oParm);
         break;

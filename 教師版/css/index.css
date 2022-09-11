@@ -626,6 +626,10 @@ canvas {
   border: none;
 }
 
+.radar-filter {
+  display: block;
+}
+
 #scienceLiteracyStatistics_container .hr {
   height: 1px;
   width: 100%;
@@ -805,6 +809,10 @@ canvas {
   }
 }
 @media (min-width: 1262px) {
+  .radar-filter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
   .scienceLiteracyStatistics-summary {
     margin: 40px 0px;
   }
@@ -1160,9 +1168,17 @@ html {
     width: 100%;
   }
   .contant-custom {
-    display: block !important;
+    display: block;
   }
   .contant-collapse {
     display: none;
+  }
+  .radar-filter {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 3fr 160px;
+    grid-gap: 20px;
+  }
+  .radar-filter .confirmBtn {
+    grid-column: 5/6;
   }
 }/*# sourceMappingURL=index.css.map */

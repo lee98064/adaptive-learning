@@ -13,6 +13,10 @@ canvas {
   border: none;
 }
 
+.radar-filter {
+  display: block;
+}
+
 #scienceLiteracyStatistics_container {
   // max-width: 1306px;
 
@@ -230,6 +234,11 @@ canvas {
 }
 
 @media (min-width: 1262px) {
+  .radar-filter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .scienceLiteracyStatistics-summary {
     margin: 40px 0px;
     h3 {

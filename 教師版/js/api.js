@@ -20,6 +20,32 @@ function getSO4BJ() {
   return $.get("../data/SO4BJ.json", (data, status) => {}, "JSON");
 }
 
+// 取得學年與班級選項
+async function getOption_SemesterAndClass(oParm) {
+  return $.ajax({
+    type: "POST",
+    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
+    data: {
+      accesstoken: oParm["accesstoken"],
+      property_classdata: 1,
+    },
+    dataType: "JSON",
+  });
+}
+// 取得學生選項
+async function getOption_Student(oParm, data) {
+  return $.ajax({
+    type: "POST",
+    url: `${proxy}/aialtest/ADLAPI/science_literacy/report`,
+    data: {
+      accesstoken: oParm["accesstoken"],
+      property_studentdata: 1,
+      ...data,
+    },
+    dataType: "JSON",
+  });
+}
+
 // 取得核心素養選項
 async function getOption_CoreLiteracy(oParm) {
   return $.ajax({
