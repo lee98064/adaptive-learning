@@ -52,7 +52,7 @@
   display: grid;
   padding: 10px;
   padding-bottom: 15px;
-  background-color: #edf9fa;
+  background-color: var(--main-bright);
   grid-template-columns: 1fr;
   grid-gap: 10px;
 
@@ -148,7 +148,7 @@
       &.history-data {
         display: none;
         &.bg-light {
-          background-color: #d8f9fc;
+          background-color: var(--main-light);
         }
       }
     }
