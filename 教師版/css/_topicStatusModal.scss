@@ -1,0 +1,60 @@
+.scienceLiteracy_topic_status_modal {
+  & .topic_status_title {
+    text-align: center;
+  }
+  & .literacy {
+    & ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+
+      & li a {
+        box-sizing: border-box;
+        display: block;
+        height: 40px;
+        line-height: 38px;
+        padding-right: 35px;
+        padding-left: 14px;
+        background-color: #1481b6;
+        color: #fff;
+        font-size: 17px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-radius: 8px;
+
+        & i {
+          color: #fff;
+        }
+        &:hover {
+          background: #419b34;
+
+          & i {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1262px) {
+  .scienceLiteracy_topic_status_modal {
+    & .literacy {
+      & ul {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+// 平板版
+@media (min-width: 768px) and (max-width: 1261px) {
+  .scienceLiteracy_topic_status_modal {
+    & .literacy {
+      & ul {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+/* 學生身分顏色設定 */
+
+:root {
+	--main-color : #0BA44A;
+	--main-bright : #FBF6E3;
+	--main-light : #FED76E;
+	--main-gloomy : #4b8631;
+	--main-dark : #877D7C;
+	--main-active : #0BA44A;
+
+	--secondary-color : #FFF2AF;
+  --secondary-light : #FFFADF;
+
+	--contrast-light : #C4E9DC;
+	--contrast-color : #EF915F;
+	--contrast-dark : #D65E1D;
+
+	--confirm-color : #285A68;
+ 	--confirm-dark: #1A424D;
+
+	--distinct-color : #D15375;
+	--distinct-dark : #A82C4D;
+}

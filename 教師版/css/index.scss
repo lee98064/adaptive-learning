@@ -1,0 +1,250 @@
+@import "./customModalBox";
+@import "./downloadModal";
+@import "./topicModal";
+@import "./topicStatusModal";
+@import "./scienceLiteracy";
+@import "./radar";
+@import "./utinity";
+// 嵌入至正式區時需要拿掉
+html {
+  overflow-y: auto !important;
+}
+
+.container {
+  height: 100%;
+}
+
+.selector-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+
+  & .selector {
+    display: block;
+    width: 100%;
+    font-size: inherit;
+
+    & span,
+    ul,
+    li {
+      font-size: inherit;
+    }
+  }
+
+  & h4 {
+    font-size: inherit;
+    margin-right: 20px;
+  }
+}
+
+.input-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+
+  & h4 {
+    font-size: inherit;
+  }
+
+  & .input-box {
+    font-size: inherit;
+    position: relative;
+    & input {
+      display: block;
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid #a3a3a3;
+      height: 35px;
+      line-height: 35px;
+      padding-left: 15px;
+      padding-right: 30px;
+      color: #5c5c5c;
+      font-size: inherit;
+    }
+    & i {
+      right: 10px;
+      top: 10px;
+      position: absolute;
+      font-size: 15px;
+    }
+
+    & button {
+      font-size: inherit;
+    }
+  }
+}
+
+#download_history {
+  font-size: 14px;
+}
+
+.pageTab .pageTabList {
+  border: 0px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-size: 14px;
+  & li {
+    flex: 1;
+    text-align: center;
+    font-size: inherit;
+    margin: 0px;
+    border-radius: 0px;
+    border-bottom: 1px solid #ebebeb;
+
+    &.actTab {
+      border-bottom: 0px;
+    }
+  }
+}
+
+#content1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+.contant-custom,
+.contant-collapse {
+  display: block;
+  padding: 14px;
+  box-shadow: 0px 0px 5px #30313345;
+  background: #fff;
+  padding: 10px 10px 20px 10px;
+  color: #5c5c5c;
+  font-size: 14px;
+  margin-bottom: 20px;
+  & h4 {
+    font-weight: normal;
+  }
+}
+
+.contant-collapse {
+  position: relative;
+  margin-bottom: 0px;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.active {
+    & i {
+      transform: translateY(-50%) rotate(90deg);
+    }
+  }
+
+  & h3 {
+    font-size: inherit;
+    text-align: center;
+    font-weight: normal;
+  }
+  & i {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 20px;
+    transition: all 0.3s;
+  }
+}
+
+.search-btn {
+  display: block;
+  width: 60%;
+  margin: auto;
+}
+
+.ModalBoxBig .ModalBoxDetailTitle {
+  border-bottom: 0px;
+}
+
+// 電腦平板共用
+@media (min-width: 768px) {
+  .pageTab .pageTabList {
+    font-size: 19px;
+  }
+
+  .selector-group {
+    font-size: 19px;
+  }
+
+  .contant-collapse {
+    font-size: 19px;
+  }
+
+  .input-group {
+    font-size: 19px;
+  }
+
+  #download_history {
+    font-size: 19px;
+  }
+
+  .search-btn {
+    font-size: 19px;
+  }
+}
+
+// 平板版
+@media (min-width: 768px) and (max-width: 1261px) {
+  #content1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+  }
+
+  .contant-custom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    // padding-bottom: 20px;
+
+    hr {
+      display: none;
+    }
+
+    & .search-btn {
+      width: 100%;
+      grid-column: 3/4;
+      margin-left: auto;
+    }
+  }
+
+  #download_history {
+    width: 31%;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+}
+
+// 電腦版
+@media (min-width: 1262px) {
+  #content1 {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr;
+    grid-gap: 40px;
+  }
+
+  .selector-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .input-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+
+  .contant-custom {
+    display: block !important;
+  }
+
+  .contant-collapse {
+    display: none;
+  }
+}
