@@ -114,10 +114,19 @@ $(document).ready(async function () {
     let isAnswer = $(this).data("is-answer");
     let category = $(this).data("category");
 
+    if (category.substring(0, 2) == "NA") {
+      category = _SO4BJ[category]["title"];
+    } else {
+      category = category + _12About[category]["title"];
+    }
+
     customModalBox(
       "教育部因才網",
       tmpl("scienceLiteracy_topic_status_modal_template", {
-        data: {},
+        data: {
+          category,
+          isAnswer,
+        },
       })
     );
   });
