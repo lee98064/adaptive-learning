@@ -460,6 +460,21 @@
 .scienceLiteracy-history-row-data .row-data-table .row-data-table-data.history-data.bg-light {
   background-color: var(--main-light);
 }
+.scienceLiteracy-history-row-data .row-data-table .row-data-table-data.history-data.bg-light span:nth-child(1),
+.scienceLiteracy-history-row-data .row-data-table .row-data-table-data.history-data.bg-light span:nth-child(2) {
+  position: relative;
+  height: 100%;
+}
+.scienceLiteracy-history-row-data .row-data-table .row-data-table-data.history-data.bg-light span:nth-child(1)::after,
+.scienceLiteracy-history-row-data .row-data-table .row-data-table-data.history-data.bg-light span:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -3px;
+  bottom: -10px;
+  top: -10px;
+  background-color: var(--main-bright);
+}
 .scienceLiteracy-history-row-data .row-data-more {
   height: 30px;
   font-size: 12px;
