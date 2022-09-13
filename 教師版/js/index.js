@@ -137,69 +137,69 @@ $(document).ready(async function () {
   });
 
   // 初始化學期選項
-  let getSemesterAndClassOption = await getData("getOption_SemesterAndClass");
-  semester_and_class_data = getSemesterAndClassOption;
-  if ("success" === getSemesterAndClassOption["status"]) {
-    Object.entries(
-      getSemesterAndClassOption["data"]["class"]["option_seme_name"]
-    ).forEach((ele) => {
-      const [key, value] = ele;
-      let html = `<li data-value="${key}">${value}</li>`;
-      $("#semester-selector > ul").append(html);
-      $("#radar-semester-selector > ul").append(html);
-    });
-    $("#semester-selector  > .valueShow")
-      .data("value", "sad")
-      .trigger("changeData");
-  }
+  // let getSemesterAndClassOption = await getData("getOption_SemesterAndClass");
+  // semester_and_class_data = getSemesterAndClassOption;
+  // if ("success" === getSemesterAndClassOption["status"]) {
+  //   Object.entries(
+  //     getSemesterAndClassOption["data"]["class"]["option_seme_name"]
+  //   ).forEach((ele) => {
+  //     const [key, value] = ele;
+  //     let html = `<li data-value="${key}">${value}</li>`;
+  //     $("#semester-selector > ul").append(html);
+  //     $("#radar-semester-selector > ul").append(html);
+  //   });
+  //   $("#semester-selector  > .valueShow")
+  //     .data("value", "sad")
+  //     .trigger("changeData");
+  // }
 
-  // 當選擇學年度時抓取班級（學習紀錄）
-  $(document).on("click", "#semester-selector li", function () {
-    $.LoadingOverlay("show");
-    let semester = $(this).data("value");
-    $("#class-selector > ul").html("");
-    $("#class-selector > ul").html("");
-    $("#class-selector > .valueShow").html("請選擇");
-    $("#class-selector > .valueShow").data("value", "");
-    $("#student-selector > ul").html("");
-    $("#student-selector > .valueShow").html("請選擇");
-    $("#student-selector > .valueShow").data("value", "");
-    semester_and_class_data["data"]["class"]["option_class_name"][semester][
-      "normal_class"
-    ]?.forEach((ele) => {
-      const { class_sn, class_name } = ele;
-      let html = `<li data-value="${class_sn}">${class_name}</li>`;
-      $("#class-selector > ul").append(html);
-    });
-    $.LoadingOverlay("hide");
-  });
+  // // 當選擇學年度時抓取班級（學習紀錄）
+  // $(document).on("click", "#semester-selector li", function () {
+  //   $.LoadingOverlay("show");
+  //   let semester = $(this).data("value");
+  //   $("#class-selector > ul").html("");
+  //   $("#class-selector > ul").html("");
+  //   $("#class-selector > .valueShow").html("請選擇");
+  //   $("#class-selector > .valueShow").data("value", "");
+  //   $("#student-selector > ul").html("");
+  //   $("#student-selector > .valueShow").html("請選擇");
+  //   $("#student-selector > .valueShow").data("value", "");
+  //   semester_and_class_data["data"]["class"]["option_class_name"][semester][
+  //     "normal_class"
+  //   ]?.forEach((ele) => {
+  //     const { class_sn, class_name } = ele;
+  //     let html = `<li data-value="${class_sn}">${class_name}</li>`;
+  //     $("#class-selector > ul").append(html);
+  //   });
+  //   $.LoadingOverlay("hide");
+  // });
 
-  // 當選擇班級時抓取學生列表（學習紀錄）
-  $(document).on("click", "#class-selector li", async function () {
-    $.LoadingOverlay("show");
-    // 抓取學生清單
-    let getStudentOption = await getData("getOption_Student", {
-      seme: $("#semester-selector > .valueShow").data("value"),
-      classtype: "normal_class",
-      class_sn: $(this).data("value"),
-    });
-    if ("success" === getStudentOption["status"]) {
-      $("#student-selector > ul").html("");
-      $("#student-selector > .valueShow").html("請選擇");
-      $("#student-selector > .valueShow").data("value", "");
-      getStudentOption["data"].forEach((ele) => {
-        $("#student-selector > ul").append(
-          `<li data-value="${ele.user_id}">${ele["uname"]}</li>`
-        );
-      });
-    }
-    $.LoadingOverlay("hide");
-  });
+  // // 當選擇班級時抓取學生列表（學習紀錄）
+  // $(document).on("click", "#class-selector li", async function () {
+  //   $.LoadingOverlay("show");
+  //   // 抓取學生清單
+  //   let getStudentOption = await getData("getOption_Student", {
+  //     seme: $("#semester-selector > .valueShow").data("value"),
+  //     classtype: "normal_class",
+  //     class_sn: $(this).data("value"),
+  //   });
+  //   if ("success" === getStudentOption["status"]) {
+  //     $("#student-selector > ul").html("");
+  //     $("#student-selector > .valueShow").html("請選擇");
+  //     $("#student-selector > .valueShow").data("value", "");
+  //     getStudentOption["data"].forEach((ele) => {
+  //       $("#student-selector > ul").append(
+  //         `<li data-value="${ele.user_id}">${ele["uname"]}</li>`
+  //       );
+  //     });
+  //   }
+  //   $.LoadingOverlay("hide");
+  // });
 
-  // 當選擇學年度時（雷達圖）
-  $(document).on("click", "#radar-semester-selector li", function () {
-    alert($(this).data("value"));
-  });
+  // // 當選擇學年度時（雷達圖）
+  // $(document).on("click", "#radar-semester-selector li", function () {
+  //   alert($(this).data("value"));
+  // });
 
   // 初始化核心素養選項
   let getCoreLiteracyOption = await getData("getOption_CoreLiteracy");
@@ -246,6 +246,20 @@ $(document).ready(async function () {
     $(this).siblings(".more-info").slideToggle("slow");
     $(this).children("i").toggleClass("active");
   });
+
+  // 初始化學期選項
+  let getSemesterAndClassOption = await getData("getOption_SemesterAndClass");
+  if ("success" === getSemesterAndClassOption["status"]) {
+    semester_and_class_data = getSemesterAndClassOption["data"];
+    Object.entries(
+      semester_and_class_data["class"]["option_seme_name"]
+    ).forEach((ele) => {
+      const [key, value] = ele;
+      let html = `<li data-value="${key}">${value}</li>`;
+      $("#semester-selector > ul").append(html);
+      $("#radar-semester-selector > ul").append(html);
+    });
+  }
 
   $.LoadingOverlay("hide");
 });
