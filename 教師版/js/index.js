@@ -1,5 +1,5 @@
 var sTokenDataValue =
-  "ZDY3ZDhhYjRmNGMxMGJmMjJhYTM1M2UyNzg3OTEzM2NFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRJNklqRTVNREEwTVMxMGREWXhOaUk3Y3pvNE9pSmlaV2hoZG1sdmNpSTdjem94TlRvaVkyaHBibVZ6WlY5eVpXRmthVzVuSWp0ek9qZzZJbU5zYVdWdWRHbGtJanR6T2pNeU9pSTJibkJ6V2xFMFMySm9ibFEyVVZaWFlXSkVaMUZoWWpoTFJrTkVPV0ZuTmlJN2N6b3hNam9pWTJ4cFpXNTBjMlZqY21WMElqdHpPalkwT2lKWWJXMWpSRUpTZVhCRmQwSndXSEZOVFdSWlNGazRPREpvWldkWVMydHphRkI0VWxkdWRqZGFNa1JqV2xWTlVqZzRTRGwxZVZaWGJYSlpkMVoxTW5oMElqdDlFZFVBZEw2MTE0NUQwODg5QzlDQTMyNDRGMTBBNTJFMzI4Rjc4OA";
+  "M2M1OWRjMDQ4ZTg4NTAyNDNiZTgwNzlhNWM3NGQwNzlFZFVBZExZVG8wT250ek9qYzZJblZ6WlhKZmFXUWlPM002TVRNNklqRTVNREEwTVMxMGREQTVNREVpTzNNNk9Eb2lZbVZvWVhacGIzSWlPM002TVRVNkltTm9hVzVsYzJWZmNtVmhaR2x1WnlJN2N6bzRPaUpqYkdsbGJuUnBaQ0k3Y3pvek1qb2lObTV3YzFwUk5FdGlhRzVVTmxGV1YyRmlSR2RSWVdJNFMwWkRSRGxoWnpZaU8zTTZNVEk2SW1Oc2FXVnVkSE5sWTNKbGRDSTdjem8yTkRvaVdHMXRZMFJDVW5sd1JYZENjRmh4VFUxa1dVaFpPRGd5YUdWbldFdHJjMmhRZUZKWGJuWTNXakpFWTFwVlRWSTRPRWc1ZFhsV1YyMXlXWGRXZFRKNGRDSTdmUT09RWRVQWRMNDA3RUM5NUJBRDBENzQyQkI3NEY0RjU2M0I1NjY2OEM==407EC95BAD0D742BB74F4F563B56668C==";
 var proxy = "https://proxy.leetools.eu.org";
 
 var topic = {};
@@ -24,6 +24,10 @@ $(document).ready(async function () {
     $.LoadingOverlay("show");
     topic = {};
     let getScienceLiteracyData = await getData("getData_ScienceLiteracy", {
+      seme: $("#semester-selector > .valueShow").data("value"),
+      classtype: "normal_class",
+      class_sn: $("#class-selector > .valueShow").data("value"),
+      stuid: $("#student-selector > .valueShow").data("value"),
       coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
       explorelearning: $("#explorelearning-selector > .valueShow").data(
         "value"
@@ -151,19 +155,28 @@ $(document).ready(async function () {
 
   // 當選擇學年度時抓取班級（學習紀錄）
   $(document).on("click", "#semester-selector li", function () {
+    $.LoadingOverlay("show");
     let semester = $(this).data("value");
     $("#class-selector > ul").html("");
+    $("#class-selector > ul").html("");
+    $("#class-selector > .valueShow").html("請選擇");
+    $("#class-selector > .valueShow").data("value", "");
+    $("#student-selector > ul").html("");
+    $("#student-selector > .valueShow").html("請選擇");
+    $("#student-selector > .valueShow").data("value", "");
     semester_and_class_data["data"]["class"]["option_class_name"][semester][
       "normal_class"
-    ].forEach((ele) => {
+    ]?.forEach((ele) => {
       const { class_sn, class_name } = ele;
       let html = `<li data-value="${class_sn}">${class_name}</li>`;
       $("#class-selector > ul").append(html);
     });
+    $.LoadingOverlay("hide");
   });
 
   // 當選擇班級時抓取學生列表（學習紀錄）
   $(document).on("click", "#class-selector li", async function () {
+    $.LoadingOverlay("show");
     // 抓取學生清單
     let getStudentOption = await getData("getOption_Student", {
       seme: $("#semester-selector > .valueShow").data("value"),
@@ -172,12 +185,15 @@ $(document).ready(async function () {
     });
     if ("success" === getStudentOption["status"]) {
       $("#student-selector > ul").html("");
+      $("#student-selector > .valueShow").html("請選擇");
+      $("#student-selector > .valueShow").data("value", "");
       getStudentOption["data"].forEach((ele) => {
         $("#student-selector > ul").append(
           `<li data-value="${ele.user_id}">${ele["uname"]}</li>`
         );
       });
     }
+    $.LoadingOverlay("hide");
   });
 
   // 當選擇學年度時（雷達圖）
