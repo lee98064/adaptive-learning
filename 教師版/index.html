@@ -102,6 +102,7 @@
               <div class="right">
                 <div class="scienceLiteracy-history-big-title">
                   <h4>題目名稱(點擊展開作答紀錄)</h4>
+                  <h4>作答學生</h4>
                   <h4 class="sm-d-none">測驗時間(年/月/日 時刻)</h4>
                 </div>
                 <div
@@ -194,6 +195,7 @@
       <div class="scienceLiteracy-history-row">
         <div class="scienceLiteracy-history-row-title">
           <h4><%= data[i].item_show_num %>.<%= data[i].item_name %></h4>
+          <h4><%= data[i].examlist[0].user_name %></h4>
           <h4 class="sm-d-none">
             <%= data[i].examlist.length == 0 ? '無資料' :
             formatDate(data[i].examlist[0].update_time) %>

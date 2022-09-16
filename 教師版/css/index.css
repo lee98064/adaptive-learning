@@ -343,7 +343,7 @@
 .scienceLiteracy-history-big-title,
 .scienceLiteracy-history-row-title {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 0.8fr;
   align-items: center;
   border: 1px solid var(--main-dark);
   padding: 10px 2px 10px 20px;
@@ -359,7 +359,7 @@
 }
 
 .scienceLiteracy-history-row-title {
-  grid-template-columns: 1fr 0.3fr;
+  grid-template-columns: 1fr 0.5fr 0.3fr;
   cursor: pointer;
 }
 .scienceLiteracy-history-row-title h4 {
@@ -490,6 +490,10 @@
 }
 
 @media (min-width: 768px) {
+  .scienceLiteracy-history-big-title,
+.scienceLiteracy-history-row-title {
+    grid-template-columns: 2fr 1fr 0.8fr;
+  }
   .scienceLiteracy-history-big-title h4,
 .scienceLiteracy-history-row-title h4 {
     font-size: 19px;
@@ -509,10 +513,10 @@
 }
 @media (min-width: 1024px) {
   .scienceLiteracy-history-big-title {
-    grid-template-columns: 1fr 1fr 0.3fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   .scienceLiteracy-history-row-title {
-    grid-template-columns: 1fr 1fr 0.3fr;
+    grid-template-columns: 1.3fr 1.3fr 1fr 0.3fr;
   }
   .scienceLiteracy-history-row-data {
     grid-template-columns: 135px 4fr;
