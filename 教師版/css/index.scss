@@ -104,6 +104,11 @@ html {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
+
+  .alert-text {
+    font-size: 14px;
+    color: #e00;
+  }
 }
 
 .contant-custom,
@@ -182,6 +187,12 @@ html {
 
   .search-btn {
     font-size: 19px;
+  }
+
+  #content1 {
+    .alert-text {
+      font-size: 19px;
+    }
   }
 }
 

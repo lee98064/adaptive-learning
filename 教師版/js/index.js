@@ -132,30 +132,6 @@ $(document).ready(async function () {
     );
   });
 
-  // 當按下下載學習紀錄
-  $(document).on("click", "#download_history", async function () {
-    $.LoadingOverlay("show");
-    let getScienceLiteracyData = await getData("getData_ScienceLiteracy");
-    const buttonBig = [
-      {
-        buttonText: "下載學習紀錄",
-        buttonId: "start_download",
-        buttonClass: "btn07 ModalBoxButton",
-      },
-    ];
-    modalBoxBig(
-      "教育部因才網",
-      tmpl("scienceLiteracy_history_download_modal_template", {
-        data: {
-          scienceLiteracyData: getScienceLiteracyData["data"],
-        },
-      }),
-      buttonBig,
-      true
-    );
-    $.LoadingOverlay("hide");
-  });
-
   // 查看過往紀錄
   $(document).on("click", ".row-data-more", function () {
     $.LoadingOverlay("show");
@@ -227,6 +203,23 @@ $(document).ready(async function () {
   $(document).on("click", ".more", function () {
     $(this).siblings(".more-info").slideToggle("slow");
     $(this).children("i").toggleClass("active");
+  });
+
+  // 當按下下載學習紀錄
+  $(document).on("click", "#download_history", async function () {
+    $.LoadingOverlay("show");
+    let getScienceLiteracyData = await getData("getData_ScienceLiteracy");
+    customModalBox(
+      "教育部因才網",
+      tmpl("scienceLiteracy_history_download_modal_template", {
+        data: {
+          semesterAndClassData: semester_and_class_data,
+          scienceLiteracyData: getScienceLiteracyData["data"],
+        },
+      }),
+      `<button type="button" class="btn07 ModalBoxButton" id="start_download">下載學習紀錄</button>`
+    );
+    $.LoadingOverlay("hide");
   });
 
   $.LoadingOverlay("hide");

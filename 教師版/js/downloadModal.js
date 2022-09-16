@@ -43,6 +43,75 @@ $(document).ready(function () {
     });
   });
 
+  // 學年度變動
+  $(document).on("change", "#download-semester", function () {
+    let semester = $(this).val();
+    $("#download-classtype").html(
+      `<option value="" disabled selected>請選擇班級類型</option>`
+    );
+    $("#download-classtype").prop("selectedIndex", 0);
+    $("#download-class").html(
+      `<option value="" disabled selected>請選擇班級</option>`
+    );
+    $("#download-class").prop("selectedIndex", 0);
+
+    Object.entries(
+      semester_and_class_data["class"]["option_class_type"][semester]
+    )?.forEach((ele) => {
+      const [key, value] = ele;
+      $("#download-classtype").append(
+        $("<option>", {
+          value: key,
+          text: value,
+        })
+      );
+    });
+  });
+
+  // 班級類型變動
+  $(document).on("change", "#download-classtype", function () {
+    let semester = $("#download-semester").val();
+    let classtype = $(this).val();
+    $("#download-class").html(
+      `<option value="" disabled selected>請選擇班級</option>`
+    );
+    $("#download-class").prop("selectedIndex", 0);
+
+    semester_and_class_data["class"]["option_class_name"][semester][
+      classtype
+    ]?.forEach((ele) => {
+      const { class_sn, class_name } = ele;
+      $("#download-class").append(
+        $("<option>", {
+          value: class_sn,
+          text: class_name,
+        })
+      );
+    });
+  });
+
+  // 班級變動
+  $(document).on("change", "#download-class", async function () {
+    $.LoadingOverlay("show");
+    let getStudentOption = await getData("getOption_Student", {
+      seme: $("#download-semester").val(),
+      classtype: $("#download-classtype").val(),
+      class_sn: $(this).val(),
+    });
+    if ("success" === getStudentOption["status"]) {
+      $("#history_download_student_filter").html("");
+      getStudentOption["data"].forEach((ele) => {
+        $("#history_download_student_filter").append(`
+          <div class="filterBox-checkBox-group">
+            <input type="checkbox" value="${ele.user_id}" />
+            <label>${ele["uname"]}</label>
+          </div> 
+        `);
+      });
+    }
+    $.LoadingOverlay("hide");
+  });
+
   // 開始下載
   $(document).on("click", "#start_download", function () {
     $.LoadingOverlay("show");
@@ -53,6 +122,9 @@ $(document).ready(function () {
 
 async function initProperty() {
   data = {
+    seme: $("#download-semester").val(),
+    classtype: $("#download-classtype").val(),
+    class_sn: $("#download-class").val(),
     showhistory: 0,
   };
 
@@ -62,6 +134,16 @@ async function initProperty() {
   ).each(function (index, element) {
     if ($(this).prop("checked")) {
       data[`itemid[${id}]`] = $(this).val();
+      id += 1;
+    }
+  });
+
+  id = 0;
+  $(
+    "#history_download_student_filter > .filterBox-checkBox-group > input[type='checkbox']"
+  ).each(function (index, element) {
+    if ($(this).prop("checked")) {
+      data[`stuid[${id}]`] = $(this).val();
       id += 1;
     }
   });

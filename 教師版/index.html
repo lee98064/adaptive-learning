@@ -111,9 +111,7 @@
                 >
                   <div class="scienceLiteracy-history-row">
                     <div class="scienceLiteracy-history-row-title">
-                      <h4>
-                        <font color="#E00"> 請選取篩選條件後查詢 </font>
-                      </h4>
+                      <h4 class="alert-text">請選取篩選條件後查詢</h4>
                     </div>
                   </div>
                 </div>
@@ -336,6 +334,43 @@
                 >
               </div>
               <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="filterBox-group">
+          <h4>選擇學生</h4>
+          <div class="filterBox">
+            <div class="filterbox-selector">
+              <select id="download-semester">
+                <option value="" disabled selected>請選擇學期</option>
+                <% for (const [key,value] of Object.entries(
+                data.semesterAndClassData["class"]["option_seme_name"])) {%>
+                <option value="<%= key %>"><%= value %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="filterbox-selector">
+              <select id="download-classtype">
+                <option value="" disabled selected>請選擇班級類型</option>
+              </select>
+            </div>
+            <div class="filterbox-selector">
+              <select id="download-class">
+                <option value="" disabled selected>請選擇班級</option>
+              </select>
+            </div>
+            <div class="filterBox-checkBox-selectAll">
+              <input type="checkbox" value="selectAll" />
+              <label>全選</label>
+            </div>
+            <div
+              class="filterBox-checkBox-group-list"
+              id="history_download_student_filter"
+            >
+              <!-- <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_show_num" />
+                <label>題目編號</label>
+              </div> -->
             </div>
           </div>
         </div>
