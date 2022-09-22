@@ -727,6 +727,7 @@ canvas {
   line-height: 166.3%;
 }
 .scienceLiteracyStatistics-data .card .card-body .card-info > span:nth-child(1), .scienceLiteracyStatistics-data .card .card-body .card-info > span:nth-child(2) {
+  cursor: pointer;
   text-decoration: underline;
 }
 .scienceLiteracyStatistics-data .card .card-body .card-info > span.wrong {
