@@ -14,8 +14,26 @@ $(document).ready(async function () {
   });
 
   $(document).on("click", ".scienceLiteracy-history-row-title", function () {
-    $(this).siblings(".scienceLiteracy-history-row-data").slideToggle("slow");
-    $(this).parent(".scienceLiteracy-history-row").toggleClass("active");
+    $(this)
+      .siblings(".scienceLiteracy-history-row-data")
+      .slideToggle("slow", () => {
+        $(this).parent(".scienceLiteracy-history-row").toggleClass("active");
+        // 隱藏展開的過往歷史
+        $(this)
+          .siblings(".scienceLiteracy-history-row-data")
+          .find(".row-data-more")
+          .removeClass("distinctBtn show")
+          .addClass("defaultBtn");
+        $(this)
+          .siblings(".scienceLiteracy-history-row-data")
+          .find(".row-data-more > i")
+          .removeClass("fa-eye-slash")
+          .addClass("fa-eye");
+        $(this)
+          .siblings(".scienceLiteracy-history-row-data")
+          .find(".row-data-table")
+          .removeClass("show-history");
+      });
   });
 
   // 當按下搜尋按鈕
