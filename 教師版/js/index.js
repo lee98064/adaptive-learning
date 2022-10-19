@@ -55,7 +55,7 @@ $(document).ready(async function () {
     topic = {};
     let getScienceLiteracyData = await getData("getData_ScienceLiteracy", {
       seme: $("#semester-selector > .valueShow").data("value"),
-      classtype: "normal_class",
+      classtype: $("#classtype-selector > .valueShow").data("value"),
       class_sn: $("#class-selector > .valueShow").data("value"),
       stuid: $("#student-selector > .valueShow").data("value"),
       coreliteracy: $("#coreliteracy-selector > .valueShow").data("value"),
