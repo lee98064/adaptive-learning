@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>學生版</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=yes,maximum-scale=5.0,minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="./css/cms-index.css" />
+    <link rel="stylesheet" type="text/css" href="./css/student_root.css" />
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./css/newcss.css" />
+    <link rel="stylesheet" type="text/css" href="./css/function.css" />
+    <link rel="stylesheet" href="./css/indexStudent.css" />
+  </head>
+  <body>
+    <!-- 核心HTML -->
+    <div class="container">
+      <section id="pageTab">
+        <div class="pageTab">
+          <ul class="pageTabList">
+            <li data-page="content1" class="actTab">學習紀錄</li>
+            <li data-page="content2">能力分析雷達圖</li>
+          </ul>
+          <div class="pageTabContent">
+            <div id="content1">
+              <div class="left">
+                <div class="contant contant-collapse active">
+                  <h3>篩選器</h3>
+                  <i class="fa-solid fa-caret-right"></i>
+                </div>
+                <div class="contant contant-custom">
+                  <div class="selector-group">
+                    <h4>核心素養:</h4>
+                    <div class="selector" id="coreliteracy-selector">
+                      <span class="valueShow" data-value>請選擇</span>
+                      <ul>
+                        <li data-value="">全部</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="selector-group">
+                    <h4>探究學習內容:</h4>
+                    <div class="selector" id="explorelearning-selector">
+                      <span class="valueShow" data-value>請選擇</span>
+                      <ul>
+                        <li data-value="">全部</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="input-group">
+                    <h4>試題編號或名稱:</h4>
+                    <div class="input-box">
+                      <input type="text" id="searchtext" />
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                  </div>
+                  <button class="btn confirmBtn search-btn">查詢</button>
+                </div>
+                <button
+                  class="btn confirmBtn d-block w-100 m-0 mt-3"
+                  id="download_history"
+                >
+                  下載學習紀錄
+                </button>
+              </div>
+              <div class="right">
+                <div class="scienceLiteracy-history-big-title">
+                  <h4>題目名稱(點擊展開作答紀錄)</h4>
+                  <h4 class="sm-d-none">測驗時間(年/月/日 時刻)</h4>
+                </div>
+                <div
+                  class="scienceLiteracy-history-row"
+                  id="scienceLiteracy-history-row"
+                >
+                  <div class="scienceLiteracy-history-row">
+                    <div class="scienceLiteracy-history-row-title">
+                      <h4>
+                        <font color="#E00"> 請選取篩選條件後查詢 </font>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="content2">
+              <div id="scienceLiteracyStatistics_container"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="ModalBoxBig"></div>
+    <script src="./js/customStyle_function.js"></script>
+    <script src="./js/jquery-3.5.1.min.ob.js"></script>
+    <script src="./js/loadingoverlay.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
+    <script src="https://adl.edu.tw/scripts/chartjs.min.js?ver=20220617"></script>
+    <script src="./js/12about.js"></script>
+    <script src="./js/SO4BJ.js"></script>
+    <script src="./js/chartSetting.js"></script>
+    <script src="./js/dateTime.js"></script>
+    <script src="./js/function.js"></script>
+    <script src="./js/tamplate.js"></script>
+    <script
+      src="https://kit.fontawesome.com/98e5a63198.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- 學習紀錄資料列模板 -->
+    <script type="text/html" id="scienceLiteracy_history_row_template">
+      <% if(data.length < 1){ %>
+      <div class="scienceLiteracy-history-row">
+        <div class="scienceLiteracy-history-row-title">
+          <h4>
+            <font color="#E00"> 尚未有作答紀錄!! </font>
+          </h4>
+        </div>
+      </div>
+      <% } %> <% for ( var i = 0; i < data.length; i++ ) { %>
+      <div class="scienceLiteracy-history-row">
+        <div class="scienceLiteracy-history-row-title">
+          <h4><%= data[i].item_show_num %>.<%= data[i].item_name %></h4>
+          <h4 class="sm-d-none">
+            <%= data[i].examlist.length == 0 ? '無資料' :
+            formatDate(data[i].examlist[0].update_time) %>
+          </h4>
+          <i class="fa-solid fa-caret-right"></i>
+        </div>
+        <div class="scienceLiteracy-history-row-data" style="display: none;">
+          <h4 class="row-data-title md-d-none">最新測驗日期(年/月/日 時刻)</h4>
+
+          <p class="md-d-none text-center row-data-content">
+            <%= data[i].examlist.length == 0 ? '無資料' :
+            formatDate(data[i].examlist[0].update_time) %>
+          </p>
+          <h4 class="row-data-title">核心素養</h4>
+
+          <p class="row-data-content">
+            <%= get12AboutStr(data[i].core_code) %>
+          </p>
+
+          <h4 class="row-data-title">探究學習內容</h4>
+          <p class="row-data-content">
+            <%= getSO4BJStr(data[i].learning_content) %>
+          </p>
+
+          <div class="row-data-number md-d-none">
+            <h4 class="row-data-title row-data-number-title">題目(解答)</h4>
+            <div class="row-data-number-btn-group">
+              <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++ ) {
+              %>
+              <button
+                class="btn defaultBtn d-block"
+                data-item-li-sn="<%= data[i]['item_li_sn'] %>"
+                data-item-li-index="<%= j %>"
+              >
+                <%= j + 1 %>
+              </button>
+              <% } %>
+            </div>
+          </div>
+          <div class="row-data-table">
+            <div class="row-data-table-title">
+              <h4 class="sm-d-none">題目(解答)</h4>
+              <h4>你的答案(依照作答時間近至遠排序)</h4>
+              <h4>對/錯</h4>
+              <h4 class="sm-d-none">作答時間(秒)</h4>
+            </div>
+
+            <% for (var j = 0; j < data[i].examlist[0].anslist.length; j++){ %>
+            <% for (var k = 0; k < data[i].examlist.length; k++) { %>
+            <div
+              class="row-data-table-data<% if( k != 0 ){ %> history-data<% } %><% if( k % 2 != 0 ){ %> bg-light<% } %>"
+            >
+              <% if( k == 0 ){ %>
+              <button
+                class="btn defaultBtn d-block sm-d-none"
+                data-item-li-sn="<%= data[i].item_li_sn %>"
+                data-item-li-index="<%= j %>"
+              >
+                <%= j + 1 %>
+              </button>
+              <h4 class="md-d-none">問題<%= j + 1 %></h4>
+              <% }else{ %>
+              <span class="sm-d-none">&nbsp;</span>
+              <span class="md-d-none">&nbsp;</span>
+              <% } %> <% if(data[i].examlist[k].anslist[j].iscorrect == "1") {
+              %>
+              <p><%= data[i].examlist[k].anslist[j].answer %></p>
+              <img src="./images/correct.png" alt="" />
+              <% }else{ %>
+              <p class="error-answer">
+                <%= data[i].examlist[k].anslist[j].answer %>
+              </p>
+              <img src="./images/error.png" alt="" />
+              <% } %>
+              <p class="sm-d-none">
+                <%= formatTime2HMSMs(data[i].examlist[k].anslist[j].answer_time)
+                %>
+              </p>
+            </div>
+            <% } %> <% } %>
+            <!-- <div class="row-data-table-data">
+                <span class="sm-d-none"></span>
+                <h4 class="md-d-none"></h4>
+                <p>因為量筒的水量最少。</p>
+                <img src="./images/error.png" alt="" />
+                <p class="sm-d-none">54秒</p>
+              </div> -->
+          </div>
+          <button class="btn defaultBtn d-block m-auto row-data-more">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <% } %>
+    </script>
+
+    <!-- 下載彈出視窗模板 -->
+    <script
+      type="text/html"
+      id="scienceLiteracy_history_download_modal_template"
+    >
+      <div class="scienceLiteracy_history_download_modal">
+        <div class="filterBox-group">
+          <h4>選擇已作答題目</h4>
+          <div class="filterBox">
+            <div class="filterBox-input-group">
+              <input
+                type="text"
+                id="filterBox-input"
+                placeholder="輸入試題編號或名稱"
+              />
+              <button id="filterBox-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+            <div class="filterBox-checkBox-selectAll">
+              <input type="checkbox" value="selectAll" />
+              <label for="selectAll1">全選</label>
+            </div>
+            <div
+              class="filterBox-checkBox-group-list"
+              id="history_download_item_filter"
+            >
+              <% if(data.scienceLiteracyData.length < 0){ %>
+              <h4 style="margin: 10px 20px">
+                <font color="#E00"> 尚未有作答紀錄!! </font>
+              </h4>
+              <% } %> <% for(var i = 0; i < data.scienceLiteracyData.length;
+              i++) { %>
+              <div class="filterBox-checkBox-group">
+                <input
+                  type="checkbox"
+                  value="<%= data.scienceLiteracyData[i].item_li_sn %>"
+                />
+                <label
+                  ><%= data.scienceLiteracyData[i].item_show_num %>. <%=
+                  data.scienceLiteracyData[i].item_name %></label
+                >
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <div class="filterBox-group">
+          <h4>選擇輸出項目</h4>
+          <div class="filterBox">
+            <div class="filterBox-checkBox-selectAll">
+              <input type="checkbox" value="selectAll" />
+              <label>全選</label>
+            </div>
+            <div
+              class="filterBox-checkBox-group-list"
+              id="history_download_column_filter"
+            >
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_show_num" />
+                <label>題目編號</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_name" />
+                <label>題目名稱</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="answer" />
+                <label>你的答案</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="iscorrect" />
+                <label>對與錯</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="answer_time" />
+                <label>作答時間(秒)</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="update_time" />
+                <label>測驗時間(年/月/日 時刻)</label>
+              </div>
+              <div class="filterBox-checkBox-group">
+                <input type="checkbox" value="item_history" />
+                <label>過往作答歷史</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!-- 題目彈出視窗標題 -->
+    <script
+      type="text/html"
+      id="scienceLiteracy_history_topic_modal_title_template"
+    >
+      <p class="topic_modal_title">
+        <%= topicName %>：<span class="topic_modal_sub_title"
+          >第<%= topicNum %>題</span
+        >
+      </p>
+    </script>
+
+    <!-- 題目彈出視窗內容 -->
+    <script type="text/html" id="scienceLiteracy_history_topic_modal_template">
+      <div class="scienceLiteracy_history_topic_modal">
+        <div class="question">
+          <span>題目</span><br />
+          <img
+            src="https://proxy.leetools.eu.org/<%= data['questions_img'][itemIndex] %>"
+            class="question_img"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="answer">
+          <span>解答</span><br />
+          <img
+            src="https://proxy.leetools.eu.org/<%= data['solution_img'][itemIndex] %>"
+            class="solution_img"
+          />
+        </div>
+      </div>
+    </script>
+
+    <!-- 雷達圖模板 -->
+    <script type="text/html" id="scienceLiteracyStatistics_template">
+      <div class="scienceLiteracyStatistics-area">
+        <div class="scienceLiteracyStatistics-summary">
+          <h3>
+            至今為止完成的<span class="green-text">自然科學探究與實作試題</span
+            >：<%= data.total_answered %>題
+          </h3>
+          <h3>
+            <span class="red-text">尚未完成的</span>自然科學探究與實作題： <%=
+            data.total_notanswer %>題
+          </h3>
+          <h3>
+            根據
+            <span class="green-text"
+              ><%= data.chtclass %> <%= data.name %></span
+            >
+            同學目前為止的作答結果，你的核心素養結果如下：
+          </h3>
+        </div>
+        <h3 class="big-title">三大核心面向雷達圖</h3>
+        <div class="scienceLiteracyStatistics-data type-1">
+          <div class="chart-container">
+            <canvas
+              data-chart="三大核心面向雷達圖"
+              data-chartData="A,B,C"
+            ></canvas>
+          </div>
+
+          <!-- A 自主行動 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">A 自主行動</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="A">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="A">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["A"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["A"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- B 溝通互動 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">B 溝通互動</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="B">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="B">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["B"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["B"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- C 社會參與 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">C 社會參與</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="C">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="C">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["C"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["C"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scienceLiteracyStatistics-area">
+        <h3 class="big-title">「核心素養」的三面九項雷達圖</h3>
+        <div class="scienceLiteracyStatistics-data type-2">
+          <h4 class="sub-title">A 自主行動</h4>
+          <div class="chart-container">
+            <canvas data-chart="A" data-chartData="A1,A2,A3"></canvas>
+          </div>
+
+          <!-- A1 身心素質與自我精進 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">A1 身心素質與自我精進</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="A1">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A1"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="A1">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A1"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A1"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["A1"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["A1"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("A1") %></p>
+            </div>
+          </div>
+
+          <!-- A2 系統思考與解決問題 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">A2 系統思考與解決問題</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="A2">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A2"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="A2">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A2"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A2"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["A2"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["A2"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("A2") %></p>
+            </div>
+          </div>
+
+          <!-- A3 規劃執行與創新應變 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">A3 規劃執行與創新應變</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="A3">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A3"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="A3">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A3"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["A3"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["A3"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["A3"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("A3") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hr md-d-none"></div>
+      <div class="scienceLiteracyStatistics-area">
+        <div class="scienceLiteracyStatistics-data type-2">
+          <h4 class="sub-title">B 溝通互動</h4>
+          <div class="chart-container">
+            <canvas data-chart="B" data-chartData="B1,B2,B3"></canvas>
+          </div>
+
+          <!-- B1 符號運用與溝通表達 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">B1 符號運用與溝通表達</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="B1">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B1"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="B1">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B1"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B1"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["B1"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["B1"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("B1") %></p>
+            </div>
+          </div>
+
+          <!-- B2 科技資訊與媒體素養 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">B2 科技資訊與媒體素養</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="B2">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B2"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="B2">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B2"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B2"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["B2"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["B2"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("B2") %></p>
+            </div>
+          </div>
+
+          <!-- B3 藝術涵養與美感素養 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">B3 藝術涵養與美感素養</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="B3">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B3"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="B3">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B3"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["B3"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["B3"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["B3"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("B3") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hr md-d-none"></div>
+      <div class="scienceLiteracyStatistics-area">
+        <!-- <h3 class="big-title">「核心素養」的三面九項雷達圖</h3> -->
+        <div class="scienceLiteracyStatistics-data type-2">
+          <h4 class="sub-title">C 社會參與</h4>
+          <div class="chart-container">
+            <canvas data-chart="C" data-chartData="C1,C2,C3"></canvas>
+          </div>
+
+          <!-- C1 道德實踐與公民意識 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">C1 道德實踐與公民意識</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="C1">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C1"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="C1">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C1"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C1"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["C1"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["C1"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("C1") %></p>
+            </div>
+          </div>
+
+          <!-- C2 人際關係與團隊合作 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">C2 人際關係與團隊合作</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="C2">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C2"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="C2">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C2"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C2"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["C2"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["C2"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("C2") %></p>
+            </div>
+          </div>
+
+          <!-- C3 多元文化與國際理解 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">C3 多元文化與國際理解</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="C3">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C3"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="C3">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C3"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["C3"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["C3"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["C3"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= get12AboutDesc("C3") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scienceLiteracyStatistics-area">
+        <h3 class="big-title">探究學習內容雷達圖</h3>
+        <div class="scienceLiteracyStatistics-data type-3">
+          <div class="chart-container">
+            <canvas
+              data-chart="探究學習內容雷達圖"
+              data-chartData="NA-A,NA-B,NA-C,NA-D"
+            ></canvas>
+          </div>
+
+          <!-- NA-A 發現問題 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">發現問題</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="NA-A">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-A"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="NA-A">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-A"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-A"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["NA-A"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["NA-A"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= getSO4BJDesc("NA-A") %></p>
+            </div>
+          </div>
+
+          <!-- NA-B 規劃與研究 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">規劃與研究</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="NA-B">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-B"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="NA-B">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-B"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-B"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["NA-B"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["NA-B"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= getSO4BJDesc("NA-B") %></p>
+            </div>
+          </div>
+
+          <!-- NA-C 論證與建模 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">論證與建模</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="NA-C">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-C"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="NA-C">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-C"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-C"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["NA-C"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["NA-C"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= getSO4BJDesc("NA-C") %></p>
+            </div>
+          </div>
+
+          <!-- NA-D 表達與分享 -->
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">表達與分享</h3>
+              <div class="card-info">
+                <span data-is-answer="true" data-category="NA-D">
+                  已做答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-D"].answered %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i>
+                  </span>
+                </span>
+                <span data-is-answer="false" data-category="NA-D">
+                  未作答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-D"].notanswer %>題<i
+                      class="fa-solid fa-hand-point-left"
+                    ></i
+                  ></span>
+                </span>
+                <span
+                  >正確答題數：<span class="green-text"
+                    ><%= data.scienceLiteracyData["NA-D"].correct %>題</span
+                  >
+                </span>
+                <span
+                  >答題正確率：<span class="green-text"
+                    ><%=
+                    correctRateToNumber(data.scienceLiteracyData["NA-D"].correct_rate)
+                    %>%</span
+                  ></span
+                >
+                <span>&nbsp;</span>
+                <% if(data.scienceLiteracyData["NA-D"].answeredtoless){ %>
+                <span class="wrong">*此項目答題數過少</span>
+                <% }else{ %>
+                <span>&nbsp;</span>
+                <% } %>
+                <span>&nbsp;</span>
+              </div>
+              <h3 class="more">
+                項目說明<i class="fa-solid fa-caret-right"></i>
+              </h3>
+              <p class="more-info"><%= getSO4BJDesc("NA-D") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!-- 已作答未作答彈出視窗 -->
+    <script type="text/html" id="scienceLiteracy_topic_status_modal_template">
+      <!-- <hr class="mb-3" /> -->
+      <div class="scienceLiteracy_topic_status_modal">
+        <h4 class="topic_status_title mb-3">
+          <font color="#0BA44A"><%= data.category %></font>
+          <% if(data.isAnswer){ %> 已作答題目 <% }else{ %> 尚未作答題目 <% } %>
+        </h4>
+        <div class="literacy mb-3">
+          <ul>
+            <% for(const question of questions){ %>
+            <li class="spanNote">
+              <a
+                class="bigUnit"
+                href="https://adl.edu.tw<%= question.src %>"
+                target="_blank"
+              >
+                <i
+                  class="fas fa-hand-pointer"
+                  style="position: initial; color:#ffdc3f;"
+                ></i>
+                <%= question.item_show_num %>. <%= question.item_name %>
+                <i class="fa fa-arrow-right" test="er"></i>
+              </a>
+              <span
+                ><%= question.item_show_num %>. <%= question.item_name %></span
+              >
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </script>
+
+    <div class="CustomModalBox hide">
+      <div class="CustomModalBox-container">
+        <div class="CustomModalBox-body">
+          <i class="fas fa-times CustomModalBox-x" aria-hidden="true"></i>
+          <div class="CustomModalBox-title">教育部因材網</div>
+          <div class="CustomModalBox-content"></div>
+          <div class="CustomModalBox-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/customModalBox.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/indexStudent.js"></script>
+    <script src="./js/downloadModal.js"></script>
+  </body>
+</html>
