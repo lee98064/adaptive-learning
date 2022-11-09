@@ -1,164 +1,31 @@
+const chart_default_innerdata = {
+  answered: 0,
+  notanswer: 0,
+  correct: 0,
+  correct_rate: "0",
+  wrong: 0,
+  answeredtoless: true,
+  answeredlist: [],
+  notanswerlist: [],
+};
+
 const chart_default_data = {
-  A: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  A1: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  A2: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  A3: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  B: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  B1: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  B2: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  B3: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  C: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  C1: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  C2: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  C3: {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  "NA-A": {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  "NA-B": {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  "NA-C": {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
-  "NA-D": {
-    answered: 0,
-    notanswer: 0,
-    correct: 0,
-    correct_rate: "0",
-    wrong: 0,
-    answeredtoless: true,
-    answeredlist: [],
-    notanswerlist: [],
-  },
+  A: { ...chart_default_innerdata },
+  A1: { ...chart_default_innerdata },
+  A2: { ...chart_default_innerdata },
+  A3: { ...chart_default_innerdata },
+  B: { ...chart_default_innerdata },
+  B1: { ...chart_default_innerdata },
+  B2: { ...chart_default_innerdata },
+  B3: { ...chart_default_innerdata },
+  C: { ...chart_default_innerdata },
+  C1: { ...chart_default_innerdata },
+  C2: { ...chart_default_innerdata },
+  C3: { ...chart_default_innerdata },
+  "NA-A": { ...chart_default_innerdata },
+  "NA-B": { ...chart_default_innerdata },
+  "NA-C": { ...chart_default_innerdata },
+  "NA-D": { ...chart_default_innerdata },
 };
 
 const chart_datasets = {
@@ -229,109 +96,75 @@ const chart_datasets = {
   },
 };
 
+const chart_default_options = {
+  legend: {
+    display: false,
+  },
+  scale: {
+    ticks: {
+      suggestedMin: 0,
+      suggestedMax: 10,
+      fontSize: 12,
+      max: 100,
+      min: 0,
+      stepSize: 10,
+    },
+    pointLabels: {
+      fontSize: 12,
+    },
+  },
+  tooltips: {
+    enabled: true,
+    callbacks: {
+      label: (tooltipItem, data) =>
+        data.labels[tooltipItem.index] +
+        ": " +
+        data.datasets[0].data[tooltipItem.index],
+    },
+  },
+  maintainAspectRatio: false,
+};
+
 const chart_options = {
-  三大核心面向雷達圖: {
-    legend: {
-      display: false,
-    },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 12,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 12,
-      },
-    },
-    maintainAspectRatio: false,
+  三大核心面向雷達圖: { ...chart_default_options },
+  A: { ...chart_default_options },
+  B: { ...chart_default_options },
+  C: { ...chart_default_options },
+  探究學習內容雷達圖: { ...chart_default_options },
+};
+
+const chart_default_options_768up = {
+  legend: {
+    display: false,
   },
-  A: {
-    legend: {
-      display: false,
+  scale: {
+    ticks: {
+      suggestedMin: 0,
+      suggestedMax: 10,
+      fontSize: 13,
+      max: 100,
+      min: 0,
+      stepSize: 10,
     },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 12,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 12,
-      },
+    pointLabels: {
+      fontSize: 19,
     },
-    maintainAspectRatio: false,
   },
-  B: {
-    legend: {
-      display: false,
+  tooltips: {
+    enabled: true,
+    callbacks: {
+      label: (tooltipItem, data) =>
+        data.labels[tooltipItem.index] +
+        ": " +
+        data.datasets[0].data[tooltipItem.index],
     },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 12,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 12,
-      },
-    },
-    maintainAspectRatio: false,
   },
-  C: {
-    legend: {
-      display: false,
-    },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 12,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 12,
-      },
-    },
-    maintainAspectRatio: false,
-  },
-  探究學習內容雷達圖: {
-    legend: {
-      display: false,
-    },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 12,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 12,
-      },
-    },
-    maintainAspectRatio: false,
-  },
+  maintainAspectRatio: false,
 };
 
 const chart_options_768up = {
   三大核心面向雷達圖: {
-    legend: {
-      display: false,
-    },
+    ...chart_default_options_768up,
     scale: {
       ticks: {
         suggestedMin: 0,
@@ -345,71 +178,15 @@ const chart_options_768up = {
         fontSize: 19,
       },
     },
-    maintainAspectRatio: false,
   },
-  A: {
-    legend: {
-      display: false,
-    },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 13,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 19,
-      },
-    },
-    maintainAspectRatio: false,
-  },
-  B: {
-    legend: {
-      display: false,
-    },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 13,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 19,
-      },
-    },
-    maintainAspectRatio: false,
-  },
-  C: {
-    legend: {
-      display: false,
-    },
-    scale: {
-      ticks: {
-        suggestedMin: 0,
-        suggestedMax: 10,
-        fontSize: 13,
-        max: 100,
-        min: 0,
-        stepSize: 10,
-      },
-      pointLabels: {
-        fontSize: 19,
-      },
-    },
-    maintainAspectRatio: false,
-  },
+  A: { ...chart_default_options_768up },
+  B: { ...chart_default_options_768up },
+  C: { ...chart_default_options_768up },
   探究學習內容雷達圖: {
-    legend: {
-      display: false,
-    },
+    ...chart_default_options_768up,
     scale: {
       ticks: {
+        display: true,
         suggestedMin: 0,
         suggestedMax: 10,
         fontSize: 15,
@@ -421,6 +198,5 @@ const chart_options_768up = {
         fontSize: 19,
       },
     },
-    maintainAspectRatio: false,
   },
 };
