@@ -116,10 +116,12 @@ const chart_default_options = {
   tooltips: {
     enabled: true,
     callbacks: {
+      title: (tooltipItem, data) => "",
       label: (tooltipItem, data) =>
         data.labels[tooltipItem.index] +
         ": " +
-        data.datasets[0].data[tooltipItem.index],
+        data.datasets[0].data[tooltipItem.index] +
+        "%",
     },
   },
   maintainAspectRatio: false,
@@ -153,10 +155,11 @@ const chart_default_options_768up = {
   tooltips: {
     enabled: true,
     callbacks: {
+      title: (tooltipItem, data) => "",
       label: (tooltipItem, data) =>
         data.labels[tooltipItem.index] +
         ": " +
-        data.datasets[0].data[tooltipItem.index],
+        data.datasets[0].data[tooltipItem.index] + '%',
     },
   },
   maintainAspectRatio: false,
